@@ -1,0 +1,71 @@
+body {
+	background: white;
+	font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+	margin-left:35px;
+	margin-top: 25px;
+	width:700px;
+	font-size: 10pt;
+}
+
+a:link , a:visited {
+	color: #003333;
+}
+
+
+h1 {
+	font-size:14pt;
+}
+
+h2 {
+	font-size:12pt;
+}
+
+div.header div.content {
+	position:relative;
+	left:50px;
+	top:30px;	
+}
+
+img {
+    border: 0px;
+}
+
+#amazon {
+    position:absolute;
+    left:500px;
+    top:600px;
+}
+
+#universal {
+    position: absolute;
+    left:520px;
+    top:470px;
+}
+
+div.faq {
+}
+
+div.faq ol li  {
+
+}
+
+div.faq ol li div.answer {
+    font-style: normal;
+    color: #333;
+    padding-top:5px;
+    padding-bottom:15px;
+    padding-left:4px;
+}
+
+span#screenshots a:first-child {
+    margin-left: 75px;
+}
+
+span#screenshots a {
+    padding-left: 50px;    
+}
+
+span#screenshots img {
+    width: 125px;
+}
+

@@ -1,0 +1,180 @@
+---
+title: Aaron Evans
+---
+
+<!DOCTYPE HTML>
+%html
+  %head
+    %title Aaron Evans
+    %meta{'http-equiv' => "Content-type", :content => "text/html;charset=UTF-8"}
+    %style{:type => 'text/css'}
+      :scss
+        @media print, screen {
+          body {
+            background-color: white;
+            color: #333;
+            font-family: "Lucida Grande", Verdana, "Trebuchet MS",  sans-serif;
+            width: 650px;
+            margin: 46px;
+          }
+
+          h2, h4 {
+            margin-bottom: 5px;
+          }
+
+          h2,h3 {
+            border-bottom: 1px solid;
+          }
+
+          h2 {
+            color: #006;
+          }
+
+          ul {
+            margin-top: 4px;
+          }
+
+          .timeframe {
+            float: right;
+            font-weight: bold;
+            font-size: .9em;
+          }
+
+          .company-name, h4 {
+            font-size: 1.1em;
+            font-weight: bold;
+          }
+
+          .position-details {
+            margin-left: 12px;
+          }
+
+          .job-title {
+            font-style: italic;
+          }
+
+          ul.multi-column {
+            width: 48em;
+          }
+
+          ul.multi-column li {
+            float: left;
+            width: 16em;
+          }
+
+          ul.multi-column + br {
+            clear: left;
+          }
+        }
+
+        @media print {
+           body { font-size: 0.65em }
+        }
+
+        @media screen {
+            body { font-size: 0.75em }
+        }
+  %body
+  %h2 Aaron Evans
+  7054 13th Ave NW<br />
+  Seattle, WA 98117<br />
+  %a{:href => "mailto:aaron@aarone.org"}
+    aaron@aarone.org
+  %br
+  %a{:href => "http://aarone.org"}
+    http://aarone.org
+  %br
+
+  %h3 Summary
+  %p
+    Experienced software developer providing technology leadership and business focus.
+    Deep understanding of software and systems architecture, web services, and infrastructure.
+    Broad experience ranging from back-end Java web services to front-end Rails websites.
+    Effective communicator with demonstrated ability to influence teams.
+
+  %h3 Experience
+
+  .company
+    .company-name Amazon Web Services
+    .position-details
+      .timeframe 2012 - present
+      .job-title Sr. Software Development Engineer
+      .org Infrastructure Supply Chain Automation
+      %ul
+        %li Lead developer for internal tools which dramatically reduced infrastructure procurement cycle times.
+    .position-details
+      .timeframe 2009 - 2012
+      .job-title Software Development Engineer
+      .org Infrastructure Automation
+      %ul
+        %li Made extensive modifications to Amazon's server provisioning system to enable broad adoption of AWS services throughout Amazon.
+        %li Maintained a critical MySQL database and upgraded the database from 5.0 to 5.1 with minimal downtime.
+        %li Designed and developed RESTful web services to manage a server provisioning system.
+        %li Provided periodic 24/7 on-call support for Amazon's server provisioning system, DHCP servers, and an out of band console management system.
+
+  .company
+    .timeframe 2006 - 2009
+    .company-name Comcast Interactive Media
+    .position-details
+      .job-title Sr. Software Developer
+      %ul
+        %li Designed and implemented RESTful web services for syndicating an entertainment database to internal partners.
+        %li Developed features for an internal content-management system to support new features on <a href="http://comcast.net">comcast.net</a> and <a href="http://fancast.com">fancast.com</a>
+        %li Responded to production issues.
+
+  .company
+    .timeframe 2005 - 2006
+    .company-name Bristol Capital, Inc
+    .position-details
+      .job-title Software Developer
+      %ul
+        %li Wrote software to parse and store telephone switch data using Cocoa and PostgreSQL.
+        %li Wrote software that generates XML content and PDF graphs for use in a DocBook workflow.
+        %li Maintained a PostgreSQL database. Setup backup scripts, designed schemas, and resolved performance problems.
+
+  .company
+    .timeframe 2002 - 2005
+    .company-name University of Pennsylvania
+    .position-details
+    .job-title  Research Assistant/Ph.D. Student
+    %ul
+      %li Performed research tasks related to programming support for embedded wireless devices.
+      %li Wrote reviews of academic papers for conferences.
+      %li Passed all written preliminary exams.
+
+
+  %h3 Education
+  %h4 University of Pennsylvania
+
+  .position-details
+    Degree: Master of Arts and Science (December 2003)<br />
+    Major: Computer Science<br />
+    GPA: 3.72
+
+  %h4 Villanova University
+  .position-details
+    Degree: Bachelor of Science and Engineering (May 2002)<br />
+    Major: Computer Engineering<br />
+    GPA: 3.54<br />
+    Senior Project: A Nintendo emulator written in Java
+
+  %h3 Technical Skills
+  %ul.multi-column
+    %li REST
+    %li Java
+    %li Ruby on Rails
+    %li MySQL
+    %li AWS
+    %li Simple Workflow Service
+    %li HTML/CSS/JavaScript
+    %li Unix
+    %li Git/Subversion/CVS
+    %li Perl
+    %li much more!
+
+  %br.used-for-styling
+
+    %script{:src => "http://www.google-analytics.com/urchin.js",  :type => "text/javascript"}
+      :javascript
+        _uacct = "UA-599950-2";
+        urchinTracker();
