@@ -39,63 +39,56 @@ def gzip path
 end
 
 def upload_to_s3 bucket, key, path, options
-  puts "uploading #{path} as #{key}"
-  s3_options = {
-    :acl => options[:acl],
-    :cache_control => options[:cache_control],
-    :content_type => options[:content_type]
-  }
-  s3_options[:content_encoding] = 'gzip' if options[:gzip]
+  puts "uploading #{path} as #{key} with options #{options}"
 
-  bucket.objects[key].write(Pathname.new(path), s3_options)
-  if options[:extensionless_copy]
-    bucket.objects[File.basename(key, File.extname(key))].write(Pathname.new(path), s3_options)
+  bucket.objects[key].write(Pathname.new(path), options)
+
+  if options[:content_type].start_with?('text/html')
+    bucket.objects[File.basename(key, File.extname(key))].write(Pathname.new(path), options)
   end
 end
 
 def upload_file bucket, key, path, options
-  if options[:gzip]
-    gzip(path) { |path| upload_to_s3(bucket, key, path, options.merge(:content_encoding => 'gzip'))}
+  if options[:content_encoding] == 'gzip'
+    gzip(path) { |path| upload_to_s3(bucket, key, path, options) }
   else
     upload_to_s3(bucket, key, path, options)
   end
 end
 
-def upload_options filename
-  options = {
-    :cache_control => 'max-age=7200',
+def content_type file
+  content_type_without_encoding =
+    case  File.extname(file)
+    when '.html'
+      'text/html'
+    when '.css'
+      'text/css'
+    when '.js'
+      'text/javascript'
+    when '.jpeg', '.jpg'
+      'image/jpeg'
+    when '.gif'
+      'image/gif'
+    else
+      content_type_without_encoding = `file -b --mime-type #{file}`.chop
+    end
+
+  if content_type_without_encoding.start_with?('text/')
+    # force utf8, file will always return ascii
+    "#{content_type_without_encoding}; charset=utf-8"
+  else
+    content_type_without_encoding
+  end
+end
+
+def upload_options file
+  {
+    # cache for a day
+    :cache_control => 'max-age=86400',
     :acl => :public_read,
-    :content_type => 'text',
-    :gzip => false
+    :content_type => content_type(file),
+    :content_encoding => 'gzip'
   }
-  options_by_extension =
-    [
-     {
-       :extension => /.*\.html?$/,
-       :gzip => true,
-       :content_type => 'text/html',
-       :extensionless_copy => true
-     },
-     {
-       :extension => /.*\.css$/,
-       :gzip => true,
-       :content_type => 'text/css'
-     },
-     {
-       :extension => /.*\.jpe?g$/,
-       :content_type => 'image/jpeg',
-       :gzip => true
-     },
-     {
-       :extension => /.*\.gif$/,
-       :content_type => 'image/gif',
-       :gzip => true
-     }
-    ]
-
-  overrides = options_by_extension.find { |options| filename =~ options[:extension] } or raise "cannot find options for extension for file #{filename}"
-
-  options.merge(overrides)
 end
 
 def upload(source, bucket)
@@ -107,8 +100,9 @@ def upload(source, bucket)
     key = file[source.length..-1]
     path = File.expand_path(file)
     next if File.directory?(path)
+
     keys << key
-    upload_file(bucket, key, path, upload_options(file))
+    upload_file(bucket, key, path, upload_options(path))
   end
   keys
 end
