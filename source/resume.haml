@@ -11,32 +11,70 @@ title: Aaron Evans
       :scss
         @media print, screen {
           body {
-            background-color: white;
-            color: #333;
+            background-color: #FEFEFE;
+            color: #003;
             font-family: "Lucida Grande", Verdana, "Trebuchet MS",  sans-serif;
-            width: 650px;
-            margin: 46px;
-          }
-
-          h2, h4 {
-            margin-bottom: 5px;
-          }
-
-          h2,h3 {
-            border-bottom: 1px solid;
+            width: 700px;
+            margin: 6em;
+            margin-top: 4em;
           }
 
           h2 {
-            color: #006;
+            margin-top: 0em;
           }
 
-          ul {
-            margin-top: 4px;
+          h4 {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+          }
+
+          h3 {
+           font-size: 1.4em;
+           margin-bottom: .5em;
+          }
+
+          h3.experience {
+            margin: 0em;
+          }
+
+          .contact {
+            float: left;
+            width: 30%;
+            h2 { margin-bottom: 0em; }
+          }
+
+          .summary {
+            float: right;
+            margin-top: 0em;
+            margin-left: 5%;
+            h3 {
+              margin: 0em;
+              padding: 0em;
+              padding-bottom: 0.25em;
+            }
+            ul {
+              margin: 0em;
+              list-style-type: none;
+              margin-left: 1.5em;
+              padding-left: 0em;
+              float: right;
+            }
+            li {
+              margin-left: 0em;
+              padding-left: 0em;
+            }
+            li:before { content: "- "; }
+            .ilike {
+              float: left;
+              margin-top: 1.7em;
+              font-size: 1.5em;
+              font-weight: bold;
+            }
           }
 
           .timeframe {
             float: right;
-            font-weight: bold;
+            font-style: italic;
             font-size: .9em;
           }
 
@@ -45,12 +83,16 @@ title: Aaron Evans
             font-weight: bold;
           }
 
-          .position-details {
-            margin-left: 12px;
-          }
+          .position-details {}
 
           .job-title {
             font-style: italic;
+          }
+
+          .details {
+            margin-bottom: 4px;
+            margin-top: .5em;
+            margin-left: 1em;
           }
 
           ul.multi-column {
@@ -65,6 +107,10 @@ title: Aaron Evans
           ul.multi-column + br {
             clear: left;
           }
+
+          .used-for-styling {
+            clear: both;
+          }
         }
 
         @media print {
@@ -75,104 +121,87 @@ title: Aaron Evans
             body { font-size: 0.75em }
         }
   %body
-  %h2 Aaron Evans
-  7054 13th Ave NW<br />
-  Seattle, WA 98117<br />
-  %a{:href => "mailto:aaron@aarone.org"}
-    aaron@aarone.org
-  %br
-  %a{:href => "http://aarone.org"}
-    http://aarone.org
-  %br
+    .contact
+      %h2 Aaron Evans
+      7054 13th Ave NW<br />
+      Seattle, WA 98117<br />
+      %a{:href => "mailto:aaron@aarone.org"}
+        aaron@aarone.org
+      %br
+      %a{:href => "http://aarone.org"}
+        http://aarone.org
 
-  %h3 Summary
-  %p
-    Experienced software developer providing technology leadership and business focus.
-    Deep understanding of software and systems architecture, web services, and infrastructure.
-    Broad experience ranging from back-end Java web services to front-end Rails websites.
-    Effective communicator with demonstrated ability to influence teams.
-
-  %h3 Experience
-
-  .company
-    .company-name Amazon Web Services
-    .position-details
-      .timeframe 2012 - present
-      .job-title Sr. Software Development Engineer
-      .org Infrastructure Supply Chain Automation
+    .summary
+      %h3 Interests
       %ul
-        %li Lead developer for internal tools which dramatically reduced infrastructure procurement cycle times.
+        %li building software systems that make people's lives better
+        %li helping others be better at what they do
+        %li building teams
+        %li making a big impact
+        %li working hard
+        %li spending time with my family
+
+    .used-for-styling
+
+    %h3.exprience Experience
+
+    .company
+      .company-name Amazon Web Services
+      .position-details
+        .timeframe 2012 - present
+        .job-title Sr. Software Development Engineer - Infrastructure Supply Chain Automation
+        .details Lead developer for Infrastructure Supply Chain Systems
+      .position-details
+        .timeframe 2009 - 2012
+        .job-title Software Development Engineer - Infrastructure Automation
+        .details Developed features for and maintained Amazon's server provisioning system
+
+    .company
+      .timeframe 2006 - 2009
+      .company-name Comcast Interactive Media
+      .position-details
+        .job-title Sr. Software Developer
+        .details Designed and implemented back-end systems supporting features for <a href="http://xfinity.comcast.net/">comcast.net</a> and <a href="http://xfinitytv.comcast.net/">fancast.com</a>
+
+    .company
+      .timeframe 2005 - 2006
+      .company-name Bristol Capital, Inc
+      .position-details
+        .job-title Software Developer
+        .details Developed Cocoa-based telephone system reporting software
+
+    .company
+      .timeframe 2002 - 2005
+      .company-name University of Pennsylvania
+      .position-details
+        .job-title Research Assistant/Ph.D. Student
+        .details Performed research tasks related to programming support for embedded wireless devices
+
+    %h3 Education
+    %h4 University of Pennsylvania
+
     .position-details
-      .timeframe 2009 - 2012
-      .job-title Software Development Engineer
-      .org Infrastructure Automation
-      %ul
-        %li Made extensive modifications to Amazon's server provisioning system to enable broad adoption of AWS services throughout Amazon.
-        %li Maintained a critical MySQL database and upgraded the database from 5.0 to 5.1 with minimal downtime.
-        %li Designed and developed RESTful web services to manage a server provisioning system.
-        %li Provided periodic 24/7 on-call support for Amazon's server provisioning system, DHCP servers, and an out of band console management system.
+      Master of Arts and Science (December 2003)<br />
+      Major: Computer Science
 
-  .company
-    .timeframe 2006 - 2009
-    .company-name Comcast Interactive Media
+    %h4 Villanova University
     .position-details
-      .job-title Sr. Software Developer
-      %ul
-        %li Designed and implemented RESTful web services for syndicating an entertainment database to internal partners.
-        %li Developed features for an internal content-management system to support new features on <a href="http://comcast.net">comcast.net</a> and <a href="http://fancast.com">fancast.com</a>
-        %li Responded to production issues.
+      Bachelor of Science and Engineering (May 2002)<br />
+      Major: Computer Engineering
 
-  .company
-    .timeframe 2005 - 2006
-    .company-name Bristol Capital, Inc
-    .position-details
-      .job-title Software Developer
-      %ul
-        %li Wrote software to parse and store telephone switch data using Cocoa and PostgreSQL.
-        %li Wrote software that generates XML content and PDF graphs for use in a DocBook workflow.
-        %li Maintained a PostgreSQL database. Setup backup scripts, designed schemas, and resolved performance problems.
+    %h3 Technical Skills
+    %ul.multi-column
+      %li AWS
+      %li Git/Subversion/CVS
+      %li HTML/CSS/JavaScript
+      %li Java
+      %li MySQL
+      %li Perl
+      %li REST
+      %li Ruby on Rails
+      %li Unix
 
-  .company
-    .timeframe 2002 - 2005
-    .company-name University of Pennsylvania
-    .position-details
-    .job-title  Research Assistant/Ph.D. Student
-    %ul
-      %li Performed research tasks related to programming support for embedded wireless devices.
-      %li Wrote reviews of academic papers for conferences.
-      %li Passed all written preliminary exams.
-
-
-  %h3 Education
-  %h4 University of Pennsylvania
-
-  .position-details
-    Degree: Master of Arts and Science (December 2003)<br />
-    Major: Computer Science<br />
-    GPA: 3.72
-
-  %h4 Villanova University
-  .position-details
-    Degree: Bachelor of Science and Engineering (May 2002)<br />
-    Major: Computer Engineering<br />
-    GPA: 3.54<br />
-    Senior Project: A Nintendo emulator written in Java
-
-  %h3 Technical Skills
-  %ul.multi-column
-    %li REST
-    %li Java
-    %li Ruby on Rails
-    %li MySQL
-    %li AWS
-    %li Simple Workflow Service
-    %li HTML/CSS/JavaScript
-    %li Unix
-    %li Git/Subversion/CVS
-    %li Perl
-    %li much more!
-
-  %br.used-for-styling
+    %br.used-for-styling
 
     %script{:src => "http://www.google-analytics.com/urchin.js",  :type => "text/javascript"}
       :javascript
