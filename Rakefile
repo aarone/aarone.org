@@ -34,19 +34,23 @@ def website_bucket
   S3.virginia_s3.buckets['www.aarone.org']
 end
 
+# pattern is relative to '_site/' and used in Dir.glob
+# invoke from the command line like: rake upload_files['resume*']
+task :upload_files, :pattern do |task, args|
+  website.publish! args[:pattern]
+ end
+
 task :generate_timeline_images do
+  timeline_images_bucket
   Aarone::S3.new.download_all!(timeline_images_bucket,
                                'timeline/',
                                timeline_images_directory)
   timeline.generate_tumbnails!
 end
 
-task :generate_website do
-  website.generate!
-end
 
-task :upload do
-  website.upload_to_s3!
+task :generate do
+  website.generate!
 end
 
 task :clean_images do
@@ -63,4 +67,9 @@ end
 
 task :clean => [:clean_images, :clean_site]
 
-task :default => [:generate_timeline_images, :generate_website, :upload]
+task :default => [:generate_timeline_images, :generate]
+
+task :publish => :default do
+  website.publish!
+end
+

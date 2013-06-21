@@ -6,204 +6,289 @@ title: Aaron Evans
 %html
   %head
     %title Aaron Evans
-    %meta{'http-equiv' => "Content-type", :content => "text/html;charset=UTF-8"}
-    %style{:type => 'text/css'}
-      :scss
-        @media print, screen {
-          body {
-            background-color: #FEFEFE;
-            color: #003;
-            font-family: "Lucida Grande", Verdana, "Trebuchet MS",  sans-serif;
-            width: 700px;
-            margin: 6em;
-            margin-top: 4em;
-          }
+    %link{:href => 'http://fonts.googleapis.com/css?family=Roboto:300', :rel => 'stylesheet', :type => 'text/css'}
 
-          h2 {
-            margin-top: 0em;
-          }
+    :scss
+      body {
+        background-color: white;
+        color: #222;
+        font-family: 'Roboto', sans-serif;
+        width: 900px;
+        margin: 3em;
+        margin-top: 3em;
+      }
 
-          h4 {
-            margin-top: 0.5em;
-            margin-bottom: 0.5em;
-          }
+      a:visited, a:link, a:hover {
+        color: #003;
+      }
 
-          h3 {
-           font-size: 1.4em;
-           margin-bottom: .5em;
-          }
+      h2 {
+        margin: 0em;
+        margin-top: 1em;
+        font-size: 1.6em;
+        font-weight: normal;
+      }
 
-          h3.experience {
-            margin: 0em;
-          }
+      h3 {
+        margin-bottom: 0.5em;
+        font-weight: normal;
+        margin-top: 1em;
+      }
 
-          .contact {
-            float: left;
-            width: 30%;
-            h2 { margin-bottom: 0em; }
-          }
+      h4 {
+        margin-bottom: 0.5em;
+        font-weight: normal;
+        margin-top: 0.5em;
+        font-size: 1.0em;
+      }
 
-          .summary {
-            float: right;
-            margin-top: 0em;
-            margin-left: 5%;
-            h3 {
-              margin: 0em;
-              padding: 0em;
-              padding-bottom: 0.25em;
-            }
-            ul {
-              margin: 0em;
-              list-style-type: none;
-              margin-left: 1.5em;
-              padding-left: 0em;
-              float: right;
-            }
-            li {
-              margin-left: 0em;
-              padding-left: 0em;
-            }
-            li:before { content: "- "; }
-            .ilike {
-              float: left;
-              margin-top: 1.7em;
-              font-size: 1.5em;
-              font-weight: bold;
-            }
-          }
+      ul.multicolumn4 {
+        width: 100%;
+      }
 
-          .timeframe {
-            float: right;
-            font-style: italic;
-            font-size: .9em;
-          }
+      p { margin-left: 1em; }
 
-          .company-name, h4 {
-            font-size: 1.1em;
-            font-weight: bold;
-          }
+      ul.multicolumn4 li {
+        float: left;
+        width: 25%;
+      }
 
-          .position-details {}
-
-          .job-title {
-            font-style: italic;
-          }
-
-          .details {
-            margin-bottom: 4px;
-            margin-top: .5em;
-            margin-left: 1em;
-          }
-
-          ul.multi-column {
-            width: 48em;
-          }
-
-          ul.multi-column li {
-            float: left;
-            width: 16em;
-          }
-
-          ul.multi-column + br {
-            clear: left;
-          }
-
-          .used-for-styling {
-            clear: both;
-          }
+      .twocolumn {
+        .left {
+          float: left;
+          width: 50%;
         }
-
-        @media print {
-           body { font-size: 0.65em }
+        .right {
+          width: 45%;
+          float: right;
         }
+      }
 
-        @media screen {
-            body { font-size: 0.75em }
+      .clear {
+        clear: both;
+      }
+
+      .narrow {
+        width: 80%;
+      }
+
+      ul.tight {
+        ul {  padding-left: 1.5em; }
+        li {
+          padding-left: 0em;
+          margin-left: 0em;
         }
+      }
+
+      .contact {
+        margin-bottom: 2em;
+        h2 { font-size: 1.9em; margin-top: 0em;}
+        .right {
+          text-align: right;
+          padding-right: 0em;
+        }
+        .twocolumn .left {
+          width: 50%;
+        }
+        .twocolumn .right {
+          width: 45%;
+        }
+      }
+
+      .timeframe {
+        float: right;
+        font-style: italic;
+        font-weight: normal;
+        font-size: .9em;
+      }
+
   %body
-    .contact
-      %h2 Aaron Evans
-      7054 13th Ave NW<br />
-      Seattle, WA 98117<br />
-      %a{:href => "mailto:aaron@aarone.org"}
-        aaron@aarone.org
-      %br
-      %a{:href => "http://aarone.org"}
-        http://aarone.org
+    %header
+      .contact
+        .twocolumn
+          .left
+            %h2 Aaron Evans
+            7054 13th Ave NW,
+            Seattle, WA 98117
+          .right
+            .email
+              %a{:href => "mailto:aaron@aarone.org"}
+                aaron@aarone.org
+            .website
+              %a{:href => "http://www.aarone.org"}
+                www.aarone.org
+        .clear
 
-    .summary
-      %h3 Interests
+
+    %section
+      %h2 Summary
+
+      %ul.narrow
+        %li Software developer with broad experience including development of desktop applications, back-end web services, and front-end websites
+        %li Most comfortable with design and implementation of back-end Java services and Ruby on Rails websites; able to learn new technologies quickly
+        %li Experience hiring and mentoring developers and growing teams
+        %li Able to connect technology to business objectives
+
+    %section
+      %h2 Experience
+
+      %h3
+        <a href="http://aws.amazon.com/">Amazon Web Services</a>
+        %span.timeframe 2009 - present
+
+      %em Sr. Software Development Engineer
+
+      %ul.tight
+        %li
+          .timeframe 2013 - present
+          EC2
+          %ul
+            %li Designing and implementing systems to reduce impact of large-scale availability events throughout AWS (2013)
+        %li
+          .timeframe 2011 - 2013
+          Infrastructure Supply Chain Automation
+          %ul
+            %li Founding member and technical lead for team focused on improving Infrastructure's supply chain
+            %li Designed and implemented systems which led to significant reductions in procurement cycle times
+            %li Grew team from 3 to ~15 members over two years
+            %li Launched externally accessible portal to ingest supply chain data from vendors
+            %li Active in the career development of teammates via informal mentoring, leveling for promotions, and writing promotion documents
+        %li
+          .timeframe 2009 - 2011
+          Infrastructure Automation
+          %ul
+            %li Designed and implemented RESTful web services using Java for Amazon's server provisioning system
+            %li Added support for EC2 capacity into the provisioning tools
+            %li Deployed the provisioning system in several new AWS regions as part of new region builds
+            %li Periodic 24/7 operational support including responding to high-severity issues
+            %li Upgraded a critical MySQL database used by dozens of systems from 5.0 to 5.1 with minimal downtime and no negative impact
+        %li
+          Extracurriculars
+          %ul
+            %li Recruiting: ~400 interviews over 3 years
+            %li Mentoring several SDEs
+            %li Started an internal group to improve software quailty within Infrastructure
+            %li
+              Awarded <a href="http://www.google.com/patents/US8417578">Patent 8,417,578</a> -
+              %em
+                Customizing Component Configurations For Utility Computing
+            %li Helped several teams troubleshoot MySQL performance problems
+        %li
+          Technologies
+          %ul.multicolumn4
+            %li AWS Services
+            %li CoffeeScript
+            %li DHCP
+            %li Git
+            %li HTML/CSS
+            %li Haml/Sass
+            %li Java
+            %li JavaScript
+            %li MySQL
+            %li PXE
+            %li Perl/CGI
+            %li REST
+            %li RHEL
+            %li Ruby/Rails
+            %li Simple Workflow Service
+            %li Solr/Lucene
+          .clear
+
+      %h3
+        <a href="http://en.wikipedia.org/wiki/Comcast_Interactive_Media">Comcast Interactive Media</a>
+        %span.timeframe 2006 - 2009
+
+      %em Sr. Software Developer
+
       %ul
-        %li building software systems that make people's lives better
-        %li helping others be better at what they do
-        %li building teams
-        %li making a big impact
-        %li working hard
-        %li spending time with my family
+        %li Developed features for a homegrown CMS supporting <a href="http://xfinity.comcast.net/">comcast.net</a> and <a href="http://xfinitytv.comcast.net/">fancast.com</a>
+        %li Developed user interfaces and publishing systems for editors to manage content
+        %li Wrote software to ingest syndicated news content from various news sources
+        %li Helped launch re-architecture of comcast.net
+        %li Designed and implemented user-preference storage system based on the OpenSocial API and backed by MySQL
+        %li
+          Technologies
+          %ul.multicolumn4
+            %li Java
+            %li MySQL
+            %li OSGi
+            %li REST
+            %li RSS/Atom
+            %li Restlet
+            %li Servlets
+            %li Solaris
+            %li Spring
+            %li Squid
+            %li XPath
+            %li XQuery
+          .clear
 
-    .used-for-styling
+      %h3
+        <a href="http://www.infoplusonline.com/">Bristol Capital, Inc</a>
+        %span.timeframe 2005 - 2006
 
-    %h3.exprience Experience
+      %em Software Developer
+      %ul
+        %li Developed telephone system (PBX) reporting software for internal Mac OS X applications
+        %li Parsed and imported telephone switch traffic data into a PostgreSQL database
+        %li Created backup scripts and performed maintenance for a PostgreSQL database
+        %li Wrote complex SQL queries to extract data for report generation and generated DocBook documents
+        %li Ported a PowerPlant application to Mac OS X
+        %li
+          Technologies
+          %ul.multicolumn4
+            %li Cocoa/Cocoa
+            %li Mac OS X
+            %li Objective-C/C++
+            %li PostgreSQL
 
-    .company
-      .company-name Amazon Web Services
-      .position-details
-        .timeframe 2012 - present
-        .job-title Sr. Software Development Engineer - Infrastructure Supply Chain Automation
-        .details Lead developer for Infrastructure Supply Chain Systems
-      .position-details
-        .timeframe 2009 - 2012
-        .job-title Software Development Engineer - Infrastructure Automation
-        .details Developed features for and maintained Amazon's server provisioning system
+          .clear
 
-    .company
-      .timeframe 2006 - 2009
-      .company-name Comcast Interactive Media
-      .position-details
-        .job-title Sr. Software Developer
-        .details Designed and implemented back-end systems supporting features for <a href="http://xfinity.comcast.net/">comcast.net</a> and <a href="http://xfinitytv.comcast.net/">fancast.com</a>
+      %h3
+        Independent Mac OS Freeware Developer
+        %span.timeframe 2004 - 2006
 
-    .company
-      .timeframe 2005 - 2006
-      .company-name Bristol Capital, Inc
-      .position-details
-        .job-title Software Developer
-        .details Developed Cocoa-based telephone system reporting software
+      %p In my free time I developed an iPhoto plug-in <a href="http://www.aarone.org/smugmugexport">SmugMugExport</a> which uploads photos from iPhoto to <a href="http://www.smugmug.com/">SmugMug</a>.
 
-    .company
-      .timeframe 2002 - 2005
-      .company-name University of Pennsylvania
-      .position-details
-        .job-title Research Assistant/Ph.D. Student
-        .details Performed research tasks related to programming support for embedded wireless devices
+      %h3
+        <a href="http://cis.upenn.edu/">University of Pennsylvania</a>
+        %span.timeframe 2002 - 2005
 
-    %h3 Education
-    %h4 University of Pennsylvania
+      %em Research Assistant/Ph.D. Student
+      %ul
+        %li Performed research tasks related to programming support for embedded wireless devices
+        %li Passed all written preliminary exams
+        %li Wrote network simulations using Python
 
-    .position-details
-      Master of Arts and Science (December 2003)<br />
-      Major: Computer Science
+    %section    
+      %h2 Education
 
-    %h4 Villanova University
-    .position-details
-      Bachelor of Science and Engineering (May 2002)<br />
-      Major: Computer Engineering
+      .twocolumn
+        .left
+          %h3 <a href="http://cis.upenn.edu/">University of Pennsylvania</a>
 
-    %h3 Technical Skills
-    %ul.multi-column
-      %li AWS
-      %li Git/Subversion/CVS
-      %li HTML/CSS/JavaScript
-      %li Java
-      %li MySQL
-      %li Perl
-      %li REST
-      %li Ruby on Rails
-      %li Unix
+          Master of Arts and Science (December 2003)
+          %br
+          Major: Computer Science
+        .right
+          %h3 <a href="http://www.villanova.edu">Villanova University</a>
 
-    %br.used-for-styling
+          Bachelor of Science and Engineering (May 2002)
+          %br
+          Major: Computer Engineering
+          %br
+          Senior Project: A Nintendo emulator written in Java
+        .clear
 
-    %script{:src => "http://www.google-analytics.com/urchin.js",  :type => "text/javascript"}
-      :javascript
-        _uacct = "UA-599950-2";
-        urchinTracker();
+
+    :javascript
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-599950-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

@@ -29,29 +29,31 @@ module Aarone
     end
 
     def generate!
-      `cd #{root} && jekyll`
+      output = `cd #{root} && jekyll build`
+      raise "jekyll failed: #{output}" unless $?.exitstatus == 0
     end
 
-    def update_website!
-      keys = upload_to_s3!
+    # uploads files to S3 and invalidates CloudFront caches
+    def publish! pattern = '**/*'
+      keys = upload_to_s3! pattern
       invalidate_cloudfront_distribution!(keys)
     end
 
-    def upload_to_s3!
+    def upload_to_s3! pattern
       keys = []
       puts "uploading website to S3"
-      Dir.glob(File.join(site_directory,  '**/*')).each do |file|
+      Dir.glob(File.join(site_directory, pattern)).each do |file|
         key = file[site_directory.length..-1]
         path = File.expand_path(file)
         next if File.directory?(path)
 
-        keys << key
-        upload_file(bucket, key, path, upload_options(path))
+        keys += upload_file(bucket, key, path, upload_options(path))
       end
       keys
     end
 
     def invalidate_cloudfront_distribution! keys
+      puts "invalidating CloudFront caches: keys: #{keys.inspect}"
       cloudfront.client.create_invalidation(:distribution_id => cloudfront_distribution_id,
                                             :invalidation_batch => {
                                               :paths => {
@@ -66,10 +68,10 @@ module Aarone
 
     private
 
-    def upload_options file
+    # cache for a day by default
+    def upload_options file, max_age_in_seconds = 86400
       {
-        # cache for a day
-        :cache_control => 'max-age=86400',
+        :cache_control => "public, max-age=#{max_age_in_seconds}",
         :acl => :public_read,
         :content_type => content_type(file),
         :content_encoding => 'gzip'
@@ -85,19 +87,23 @@ module Aarone
       end
     end
 
-    def upload_to_s3 bucket, key, path, options
+    def upload_file_to_s3 bucket, key, path, options
       puts "uploading #{path} as #{key} with options #{options}"
 
+      uploaded_keys = [key]
       bucket.objects[key].write(Pathname.new(path), options)
 
       if options[:content_type].start_with?('text/html')
-        bucket.objects[File.basename(key, File.extname(key))].write(Pathname.new(path), options)
+        extensionless_key = File.basename(key, File.extname(key))
+        bucket.objects[extensionless_key].write(Pathname.new(path), options)
+        uploaded_keys << extensionless_key
       end
+      uploaded_keys
     end
 
     def upload_file bucket, key, path, options
       if options[:content_encoding] == 'gzip'
-        gzip(path) { |path| upload_to_s3(bucket, key, path, options) }
+        gzip(path) { |path| upload_file_to_s3(bucket, key, path, options) }
       else
         upload_to_s3(bucket, key, path, options)
       end

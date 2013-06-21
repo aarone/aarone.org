@@ -13,7 +13,6 @@ module Jekyll
     end
 
     def convert(content)
-      puts "converting content"
       engine = Haml::Engine.new(content)
       engine.render
     end
@@ -23,7 +22,6 @@ end
 module Haml::Filters
   module Scss
     include Base
-    lazy_require 'sass/plugin'
 
     def render(text)
       ::Sass::Engine.new(text, ::Sass::Plugin.engine_options.merge(:syntax => :scss)).render
