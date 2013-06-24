@@ -1,0 +1,118 @@
+---
+title: Evans Timeline
+---
+
+<!DOCTYPE HTML>
+%html
+  %head
+    %title The Evans Timeline
+    %link{:href => 'http://fonts.googleapis.com/css?family=Roboto:300,700', :rel => 'stylesheet', :type => 'text/css'}
+
+    :scss
+      body {
+        width: 900px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.2em;
+        margin: 2em;
+        color: #333;
+      }
+      table.timeline {
+        padding: 0em;
+        margin-top: 3em;
+        th {
+         padding-bottom: .7em;
+         font-weight: normal;
+         font-size: 1.2em;
+        }
+        tr td:first-child {
+          padding-right: .7em;
+          padding-left: .7em;
+          font-size: 1.2em;
+        }
+        td img {
+         padding: .5em;
+         width: 175px;
+         height: 175px;
+        }
+      }
+
+      #copy {
+        font-size: 0.85em;
+        position:fixed;
+        right:10px;
+        bottom: 5px;
+        color: #999;
+       }
+  %body
+    %h2 The Evans Timeline
+
+    %p Each year we take portraits of each member of the family.  This idea is borrowed from <a href="http://zonezero.com/magazine/essays/diegotime/time.html">Diego Godlberg's The Arrow of Time</a>. All photos are kept in a <a href="http://aarone.smugmug.com/gallery/7006044_RUvjw">gallery</a> at <a href="http://smugmug.com">SmugMug</a>.  Photos are taken at the beginning of each year or the end of the prior year.
+
+    %table.timeline
+      %thead
+        %tr
+          %th Year
+          %th Aaron
+          %th Season
+          %th Claire
+          %th Cora
+      %tbody    
+        %tr
+          %td 2007
+          %td <img src="images/timeline/2007/aaron.jpg" alt="aaron 2007"/>
+          %td <img src="images/timeline/2007/season.jpg" alt="season 2007" />
+          %td
+          %td  
+        %tr
+          %td 2008
+          %td <img src="images/timeline/2008/aaron.jpg" alt="aaron 2008" />
+          %td <img src="images/timeline/2008/season.jpg" alt="season 2008" />
+          %td
+          %td  
+        %tr
+          %td 2009
+          %td <img src="images/timeline/2009/aaron.jpg" alt="aaron 2009" />
+          %td <img src="images/timeline/2009/season.jpg" alt="season 2009" />
+          %td <img src="images/timeline/2009/claire.jpg" alt="claire 2009" />
+          %td
+        %tr     
+          %td 2010
+          %td <img src="images/timeline/2010/aaron.jpg" alt="aaron 2010" />
+          %td <img src="images/timeline/2010/season.jpg" alt="season 2010" />
+          %td <img src="images/timeline/2010/claire.jpg" alt="claire 2010" />
+          %td
+        %tr
+          %td 2011
+          %td <img src="images/timeline/2011/aaron.jpg" alt="aaron 2011" />
+          %td <img src="images/timeline/2011/season.jpg" alt="season 2011" />
+          %td <img src="images/timeline/2011/claire.jpg" alt="claire 2011" />
+          %td <img src="images/timeline/2011/cora.jpg" alt="cora 2011" />
+        %tr    
+          %td 2012
+          %td <img src="images/timeline/2012/aaron.jpg" alt="aaron 2012" />
+          %td <img src="images/timeline/2012/season.jpg" alt="season 2012" />
+          %td <img src="images/timeline/2012/claire.jpg" alt="claire 2012" />
+          %td <img src="images/timeline/2012/cora.jpg" alt="cora 2012" />
+        %tr     
+          %td 2013
+          %td <img src="images/timeline/2013/aaron.jpg" alt="aaron 2013" />
+          %td <img src="images/timeline/2013/season.jpg" alt="season 2013" />
+          %td <img src="images/timeline/2013/claire.jpg" alt="claire 2013" />
+          %td <img src="images/timeline/2013/cora.jpg" alt="cora 2013" />
+
+    %div#copy
+      &copy; 
+      <script>document.write(new Date().getFullYear())</script>
+      All Rights Reserved.
+
+    :javascript
+      var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', 'UA-599950-2']);
+       _gaq.push(['_trackPageview']);
+       (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+    %script{:src => "/js/retina.js"}
+

@@ -1,0 +1,12 @@
+
+var processInfo = NSProcessInfo.processInfo();
+
+var dimension =  parseInt(processInfo.arguments()[2]);
+var inputPath = processInfo.arguments()[3];
+var outputPath = processInfo.arguments()[4];
+
+var acorn = JSTalk.application("Acorn");
+var image = acorn.open_(inputPath);
+image.scaleImageToWidth(dimension);
+image.dataRepresentationOfType("public.jpeg").writeToFile(outputPath);
+image.close();

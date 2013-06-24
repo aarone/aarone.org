@@ -29,8 +29,8 @@ module Aarone
         small_square_image_filename = File.join(directory, basename.sub(/\-full/, '') + extension)
 
         crop_to_square(file, full_square_image_filename, min_dimension(file))
-        scale_to_dimension(full_square_image_filename, large_square_image_filename, 300)
-        scale_to_dimension(full_square_image_filename, small_square_image_filename, 150)
+        scale_to_dimension(full_square_image_filename, large_square_image_filename, 350)
+        scale_to_dimension(full_square_image_filename, small_square_image_filename, 175)
       end
     end
 
@@ -54,9 +54,10 @@ module Aarone
       `convert -gravity Center -crop #{dimension}x#{dimension}+0+0 #{file} #{result_filename}`
     end
 
-    def scale_to_dimension source_filename, result_filename, dimension
-      # see http://www.imagemagick.org/Usage/resize/#resize_unsharp for info on unsharp value
-      `convert -resize #{dimension}x#{dimension} -unsharp 0x0.75+0.75+0.008 #{source_filename} #{result_filename}`
+    def scale_to_dimension source_filename, result_filename, dimension      
+      # use Acorn to scale images; only works on MacOS X
+      output = `jstalk bin/scale.jstalk #{dimension} #{source_filename} #{result_filename}`
+      raise "image scaling failed: #{output}" unless $?.exitstatus == 0
     end
   end
 end

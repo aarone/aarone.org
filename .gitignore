@@ -3,3 +3,4 @@
 .#*
 source/images/timeline/*
 _site
+.sass-cache

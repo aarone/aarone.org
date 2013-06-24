@@ -2,7 +2,6 @@ require 'aarone/s3'
 require 'aarone/timeline'
 require 'aarone/website'
 
-
 module Aarone
   S3_CONFIG_PATH = File.expand_path('~/.s3.yml')
 

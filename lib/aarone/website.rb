@@ -71,7 +71,7 @@ module Aarone
     # cache for a day by default
     def upload_options file, max_age_in_seconds = 86400
       {
-        :cache_control => "public, max-age=#{max_age_in_seconds}",
+        :cache_control => "max-age=#{max_age_in_seconds}",
         :acl => :public_read,
         :content_type => content_type(file),
         :content_encoding => 'gzip'
