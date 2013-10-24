@@ -27,8 +27,9 @@ def website_bucket
 end
 
 # pattern is relative to '_site/' and used in Dir.glob
-# invoke from the command line like: rake upload_files['resume*']
+# invoke from the command line like: rake "upload_files[smugmugexport.*]"
 task :upload_files, :pattern do |task, args|
+  puts "#{args[:pattern]}"
   website.publish! args[:pattern]
 end
 
