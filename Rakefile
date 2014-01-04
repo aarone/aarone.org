@@ -41,9 +41,10 @@ namespace :timeline do
     images_matching = if args.filter_regex 
                         Regexp.new(args.filter_regex)
                       else
-                        /.*/
+                        Regexp.new('.*')
                       end
 
+    puts "generating with regex #{images_matching}"
     timeline.generate_tumbnails! images_matching
   end
 

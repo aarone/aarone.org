@@ -17,7 +17,7 @@ module Aarone
     # written using RMagic or something else that's native to Ruby
     # http://rmagick.rubyforge.org/
     def generate_tumbnails! filter = /.*/
-      puts "generating timeline thumbnails"
+      puts "generating timeline thumbnails from #{root} (filter = #{filter.to_s})"
       Dir.glob(root + '/**/*').
           select{|file| jpeg?(file) && file.include?("-full") && filter.match(file) }.
           each do |file|
