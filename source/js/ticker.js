@@ -140,7 +140,3 @@
   };
 }(window.Ticker = window.Ticker || {}));
 
-window.onload = function() {
-  var target = document.querySelector('.ticker');
-  Ticker.show({target : target});
-};

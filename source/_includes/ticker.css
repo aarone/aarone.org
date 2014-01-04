@@ -18,6 +18,9 @@ pre {
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+pre ul {
+  margin: 0px;
+}
 a:hover, a:visited, a:link, a:active {
   color: green;
   text-decoration: underline;
