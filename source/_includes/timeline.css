@@ -1,0 +1,38 @@
+body {
+  width: 900px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  margin: 2em;
+  color: #333;
+}
+
+table.timeline {
+  padding: 0em;
+  margin-top: 3em;
+}
+
+table.timeline  th {
+  padding-bottom: .7em;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+table.timeline  tr td:first-child {
+  padding-right: .7em;
+  padding-left: .7em;
+  font-size: 1.2em;
+}
+
+table.timeline  td img {
+  padding: .5em;
+  width: 175px;
+  height: 175px;
+}
+
+#copy {
+  font-size: 0.85em;
+  position:fixed;
+  right:10px;
+  bottom: 5px;
+  color: #999;
+}

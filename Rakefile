@@ -1,6 +1,5 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
 
-require 'aws-sdk'
 require 'aarone'
 require 'fileutils'
 
@@ -10,27 +9,9 @@ def root
   File.dirname(__FILE__)
 end
 
-def cloudfront_distribution_id
-  Aarone::aws_config['cloudfront_distribution_id']
-end
 
-def website
-  Website.new(root, website_bucket, AWS::CloudFront.new, cloudfront_distribution_id)
-end
-
-def timeline_images_bucket
-  S3.oregon_s3.buckets['aarone.org.timeline']
-end
-
-def website_bucket
-  S3.virginia_s3.buckets['www.aarone.org']
-end
-
-# pattern is relative to '_site/' and used in Dir.glob
-# invoke from the command line like: rake "upload_files[smugmugexport.*]"
-task :upload_files, :pattern do |task, args|
-  puts "#{args[:pattern]}"
-  website.publish! args[:pattern]
+def bucket_name
+  'www.aarone.org'
 end
 
 namespace :timeline do
@@ -49,15 +30,21 @@ namespace :timeline do
   # 3) Acorn
   desc 'download original timeline images from S3'
   task :download_originals do
-    timeline_images_bucket
-    Aarone::S3.new.download_all!(timeline_images_bucket,
-                                 'timeline/',
-                                 timeline_images_directory)
+    FileUtils.mkdir_p timeline_images_directory
+    %x[ s3cmd get -r s3://aarone.org.timeline/timeline/ #{timeline_images_directory} ]
   end
 
   desc 'generate timeline thumbnails (assumes originals exist)'
-  task :generate_thumbnails do
-    timeline.generate_tumbnails!
+  # invoke as rake 'timeline:generate_thumbnails[2014]' to only
+  # generate thumbnails with 2014 in the path
+  task :generate_thumbnails, :filter_regex do |task,args|
+    images_matching = if args.filter_regex 
+                        Regexp.new(args.filter_regex)
+                      else
+                        /.*/
+                      end
+
+    timeline.generate_tumbnails! images_matching
   end
 
   desc 'download timeline images from S3 and generate thumbnails'
@@ -75,20 +62,61 @@ namespace :timeline do
 
 end
 
-desc 'generates website content'
-task :generate do
-  website.generate!
+def files_with_suffix suffix
+  Dir.glob(File.join(root, '_site/**/*')).
+    select {|f| f.end_with?(suffix)}
+end
+
+task :strip_html_extensions do
+  files_with_suffix('.html').each do |file|
+    FileUtils.cp file, file.sub(/.html$/, '')
+  end
+end
+
+task :gzip_files do
+  system("find _site/ -type f -exec gzip -n {} +")
+  files_with_suffix('.gz').each do |file|
+    FileUtils.mv file, file.sub(/.gz$/, '')
+  end
+end
+
+task :jekyll_build do
+  system("jekyll build --trace")
+end
+
+task :build => [:clean, :jekyll_build]
+
+desc 'uses s3cmd instead of random ruby stuff'
+task :upload => [:build, :strip_html_extensions, :gzip_files] do
+  html_file_includes = Dir.glob('_site/**/*.html').
+    flat_map {|f| [f, f.sub(/.html$/, '')]}.
+    flat_map {|f| f.sub('_site/', '')}.
+    collect { |f| "--include '#{f}' "}.
+    join(' ')
+
+  one_minute = 60
+  one_day = 60*60*24
+  thirty_days = one_day * 30
+  command = "s3cmd sync  --progress -M --acl-public  --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{one_minute}' -m 'text/html'  --cf-invalidate-default-index --cf-invalidate  _site/ s3://#{bucket_name}/ --exclude '*.*' #{html_file_includes}"
+  puts command
+  system command
+
+  {
+    'css' => ['text/css', one_day],
+    'js' => ['text/javascript', one_day],
+    'gif' => ['image/gif', thirty_days],
+    'jpg' => ['image/jpeg', thirty_days]
+  }.each do |extension, (content_type, max_age)|
+    command = "s3cmd sync  --progress -M --acl-public  --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{max_age}' -m '#{content_type}'  --cf-invalidate  _site/ s3://#{bucket_name}/ --exclude '*.*' --include '*.#{extension}'"
+    puts command
+    system command
+  end
 end
 
 task :clean_site do
-  website.clean!
+  %x[rm -Rf _site/*]
 end
 
 task :clean => ['timeline:clean', :clean_site]
 
 task :default => ['timeline:sanity_check', :generate]
-
-desc 'publishes the website to S3'
-task :publish => :default do
-  website.publish!
-end

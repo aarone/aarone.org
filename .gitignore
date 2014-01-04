@@ -1,6 +1,9 @@
 
 *~
 .#*
-source/images/timeline/*
+/images/timeline/*
+/source/images/timeline/*
+/build
 _site
 .sass-cache
+Gemfile.lock

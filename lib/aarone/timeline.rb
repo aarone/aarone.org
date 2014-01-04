@@ -16,9 +16,12 @@ module Aarone
     # All this ImageMagick code is crap and would possibly be nicer if
     # written using RMagic or something else that's native to Ruby
     # http://rmagick.rubyforge.org/
-    def generate_tumbnails!
+    def generate_tumbnails! filter = /.*/
       puts "generating timeline thumbnails"
-      Dir.glob(root + '/**/*').select{|file| jpeg?(file) && file.include?("-full")}.each do |file|
+      Dir.glob(root + '/**/*').
+          select{|file| jpeg?(file) && file.include?("-full") && filter.match(file) }.
+          each do |file|
+
         puts file
         directory = File.dirname(file)
         extension = File.extname(file)
@@ -54,7 +57,7 @@ module Aarone
       `convert -gravity Center -crop #{dimension}x#{dimension}+0+0 #{file} #{result_filename}`
     end
 
-    def scale_to_dimension source_filename, result_filename, dimension      
+    def scale_to_dimension source_filename, result_filename, dimension
       # use Acorn to scale images; only works on MacOS X
       output = `jstalk bin/scale.jstalk #{dimension} #{source_filename} #{result_filename}`
       raise "image scaling failed: #{output}" unless $?.exitstatus == 0
