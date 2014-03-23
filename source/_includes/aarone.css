@@ -50,7 +50,7 @@ section ul {
   padding-right: 0;
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 600px) {
   #page {
     padding-top: 10%;
   }
