@@ -76,6 +76,11 @@ footer {
   color: #999;
 }
 
+#copy a:link, #copy a:visited, #copy a:hover, #copy a:active {
+  color: #999;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 700px) {
   header {
     margin: 0em;
