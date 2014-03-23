@@ -1,9 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:300,700);
 
-html {
-  -webkit-text-size-adjust:none
-}
-
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
@@ -87,6 +83,7 @@ footer {
   #timeline {
     font-size: 0.6em;
   }
+  /* rotate the years */
   #timeline .row:not(:first-child) span:first-child {
     margin-top: 2em;
     -webkit-transform: rotate(-90deg);
