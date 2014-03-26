@@ -38,7 +38,7 @@ namespace :timeline do
   # invoke as rake 'timeline:generate_thumbnails[2014]' to only
   # generate thumbnails with 2014 in the path
   task :generate_thumbnails, :filter_regex do |task,args|
-    images_matching = if args.filter_regex 
+    images_matching = if args.filter_regex
                         Regexp.new(args.filter_regex)
                       else
                         Regexp.new('.*')
@@ -82,7 +82,7 @@ task :gzip_files do
 end
 
 task :jekyll_build do
-  system("jekyll build --trace")
+  system("jekyll build --trace") || raise("command failed; cannot find jekyll?")
 end
 
 task :build => [:clean, :jekyll_build]

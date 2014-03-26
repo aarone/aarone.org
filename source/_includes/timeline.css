@@ -1,32 +1,71 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,700);
+
 body {
-  width: 900px;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.2em;
-  margin: 2em;
   color: #333;
 }
 
-table.timeline {
-  padding: 0em;
-  margin-top: 3em;
+#page {
+  max-width: 1000px;
+  margin: 1em auto;
 }
 
-table.timeline  th {
-  padding-bottom: .7em;
-  font-weight: normal;
-  font-size: 1.2em;
+header {
+  margin: 1em;
 }
 
-table.timeline  tr td:first-child {
-  padding-right: .7em;
-  padding-left: .7em;
-  font-size: 1.2em;
+header > p {
+  max-width: 600px;
 }
 
-table.timeline  td img {
-  padding: .5em;
-  width: 175px;
-  height: 175px;
+#timeline {
+  width: 100%;
+}
+
+#timeline .row {
+  margin-bottom: 1em;
+}
+
+/* first row */
+#timeline .row:first-child {
+  margin-bottom: 1em;
+}
+
+#timeline .row:first-child span {
+  font-size: 1.1em;
+}
+
+#timeline .row span  {
+  float: left;
+  width: 20.5%;
+  padding: 0;
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: center;
+}
+
+/* first element in each row (year) */
+#timeline .row span:first-child {
+  /* inherits 1% margins above; total width is 10% */
+  width: 8%;
+  max-width: 3em;
+  font-size: 1.1em;
+}
+
+#timeline .row span img {
+  width: 95%;
+  max-width: 175px;
+}
+
+#timeline .row:after {
+  content: ' ';
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
+
+footer {
+  margin-top: 5em;
 }
 
 #copy {
@@ -35,4 +74,27 @@ table.timeline  td img {
   right:10px;
   bottom: 5px;
   color: #999;
+}
+
+#copy a:link, #copy a:visited, #copy a:hover, #copy a:active {
+  color: #999;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 700px) {
+  header {
+    margin: 0em;
+  }
+  #timeline {
+    font-size: 0.6em;
+  }
+  /* rotate the years */
+  #timeline .row:not(:first-child) span:first-child {
+    margin-top: 2em;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  }
 }

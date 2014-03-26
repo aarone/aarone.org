@@ -1,0 +1,63 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
+
+body {
+  background-color: white;
+  font-family: 'Lato', serif;
+  color: rgb(51, 56, 74);
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: rgb(51, 56, 74);
+}
+
+.col {
+  display: block;
+  float: left;
+  width: 50%;
+  margin: 0 auto;
+}
+
+img#aaron {
+  width: 100%;
+  max-width: 200px;
+}
+
+#page {
+  padding-top: 20%;
+  margin: 0 auto;
+  max-width: 550px;
+}
+
+h1 {
+  margin: 0;
+}
+
+header {
+  text-align: center;
+}
+
+section {
+  padding: 1em;
+  padding-top: 1em;
+}
+
+section ul {
+  list-style-type: none;
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media screen and (max-height: 600px) {
+  #page {
+    padding-top: 10%;
+  }
+}
+
+@media screen and (max-height: 400px) {
+  #page {
+    padding-top: 1em;
+  }
+}
