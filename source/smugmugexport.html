@@ -83,7 +83,7 @@ title: SmugMugExport
         <h2>Requirements</h2>
         <ul>
           <li>iPhoto version &ge; 6</li>
-          <li>Mac OS X Tiger (10.4) or greater</li>
+          <li>Mac OS X Snow Lepoard (10.6) or greater</li>
         </ul>
 
         <h2>FAQ</h2>
@@ -129,7 +129,17 @@ title: SmugMugExport
             </li>
             <li>How do I uninstall SmugMugExport?
               <div class="answer">
-                To uninstall, do the following:
+                <p>
+                On newer versions of iPhoto, you can uninstall using the following:
+                <ol>
+                  <li>Quit iPhoto</li>
+                  <li>Open the Finder</li>
+                  <li>Navigate to <code>/Library/Application Support/iPhoto/Plugins</code></li>
+                  <li>Remove the directory 'SmugMugExport.iPhotoExporter'</li>
+                </ol>
+                </p>
+                <p>
+                If you're running an older version:
                 <ol>
                   <li>Quit iPhoto</li>
                   <li>select iPhoto in the Finder</li>
@@ -137,6 +147,7 @@ title: SmugMugExport
                   <li>In the window that opens, navigate to 'Contents/PlugIns'</li>
                   <li>move SmugMugExport.iPhotoExporter to the trash</li>
                 </ol>
+                </p>
               </div>
             </li>
             <li>Why aren't iPhoto image titles being uploaded?
