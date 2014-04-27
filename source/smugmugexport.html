@@ -39,7 +39,8 @@ title: SmugMugExport
         <div id="universal"><img alt="universal binary icon" src="images/smugmugexport/MacOSX_Universal_45px.gif" /></div>
         <h2>Downloads</h2>
         <ul>
-          <li><a href="http://s3.amazonaws.com/smugmugexport/SmugMugExport-1.0.14.zip">SmugMugExport 1.0.14</a>  (2 May 2014)</li>
+          <li><a href="http://s3.amazonaws.com/smugmugexport/SmugMugExport-1.0.15.zip">SmugMugExport 1.0.15</a>  (16 Sept 2014)</li>
+          <!--<li><a href="http://s3.amazonaws.com/smugmugexport/SmugMugExport-1.0.14.zip">SmugMugExport 1.0.14</a>  (2 May 2014)</li>-->
           <!-- <li><a href="http://s3.amazonaws.com/smugmugexport/SmugMugExport-1.0.11.zip">SmugMugExport 1.0.11</a>  (11 Aug 2013)</li> -->
           <!--    <li><a href="http://s3.amazonaws.com/smugmugexport/SmugMugExport-1.0.10.zip">SmugMugExport 1.0.10</a>  (6 Dec 2008, <a href="http://s3.amazonaws.com/smugmugexport/website/release-notes/ReleaseNotes-1.0.10.txt">Release Notes</a>)</li> -->
         </ul>
@@ -83,7 +84,7 @@ title: SmugMugExport
         <h2>Requirements</h2>
         <ul>
           <li>iPhoto version &ge; 6</li>
-          <li>Mac OS X Tiger (10.4) or greater</li>
+          <li>Mac OS X Snow Lepoard (10.6) or greater</li>
         </ul>
 
         <h2>FAQ</h2>
@@ -105,10 +106,10 @@ title: SmugMugExport
                 </ol>
               </div>
             </li>
-            <li>I'm using Mac OS X 10.8 (Mountain Lion) and I can't use or install the plug-in; does the plugin work?
+            <li>I'm using Mac OS X 10.8 Mountain Lion or something newer and I can't use or install the plug-in; does the plugin work?
               <div class="answer">
-                Mac OS 10.8 has security restrictions which prevent
-                applications which are not signed by Apple to run by default.
+                Mac OS 10.8 and later have security restrictions that prevent
+                applications that are not signed by Apple to run by default.
                 If you'd like to run the plugin, you can disable the security
                 restrictions as follows:
                 <ol>
@@ -129,7 +130,17 @@ title: SmugMugExport
             </li>
             <li>How do I uninstall SmugMugExport?
               <div class="answer">
-                To uninstall, do the following:
+                <p>
+                On newer versions of iPhoto, you can uninstall using the following:
+                <ol>
+                  <li>Quit iPhoto</li>
+                  <li>Open the Finder</li>
+                  <li>Navigate to <code>/Library/Application Support/iPhoto/Plugins</code></li>
+                  <li>Remove the directory 'SmugMugExport.iPhotoExporter'</li>
+                </ol>
+                </p>
+                <p>
+                If you're running an older version:
                 <ol>
                   <li>Quit iPhoto</li>
                   <li>select iPhoto in the Finder</li>
@@ -137,6 +148,7 @@ title: SmugMugExport
                   <li>In the window that opens, navigate to 'Contents/PlugIns'</li>
                   <li>move SmugMugExport.iPhotoExporter to the trash</li>
                 </ol>
+                </p>
               </div>
             </li>
             <li>Why aren't iPhoto image titles being uploaded?
@@ -165,7 +177,7 @@ title: SmugMugExport
         SmugMugExport is distributed under the <a href="http://www.opensource.org/licenses/bsd-license.php">New BSD License</a>.
         The source is <a href="http://github.com/aarone/smugmugexport">available at github</a>.
 
-        <p>Bugs and patches can be reported to <a href="mailto:%61%61%72%6F%6E%40%61%61%72%6F%6E%65%2E%6F%72%67">the author</a> </p>
+        <p>Bugs and patches can be reported to <a href="mailto:%61%61%72%6F%6E%40%61%61%72%6F%6E%65%2E%6F%72%67">the author</a></p>
 
       </div>
 

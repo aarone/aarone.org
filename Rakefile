@@ -68,7 +68,7 @@ def files_with_suffix suffix
     select {|f| f.end_with?(suffix)}
 end
 
-task :strip_html_extensions do
+task :copy_html_files_as_extensionless do
   files_with_suffix('.html').each do |file|
     FileUtils.cp file, file.sub(/.html$/, '')
   end
@@ -82,18 +82,21 @@ task :gzip_files do
 end
 
 task :jekyll_build do
-  system("jekyll build --trace") || raise("command failed; may jekyll isn't installed or is an old version?")
+  output = `jekyll build --trace 2>&1`
+  raise("command failed: #{output}") unless $?.success?
+end
+
+def execute_command cmd
+  puts cmd
+  output = `#{cmd} 2>&1`
+  raise("command failed: #{output}") unless $?.success?
 end
 
 task :build => [:clean, :jekyll_build]
 
-def execute_command command_with_args
-  puts command_with_args
-  system command_with_args
-end
-
-desc 'use s3cmd to upload files to S3'
-task :publish => [:build, :strip_html_extensions, :gzip_files] do
+desc 'uses s3cmd instead of random ruby stuff'
+task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
+  # include .html files and their extensionless variants
   html_files = Dir.glob('_site/**/*.html').
     flat_map {|f| [f, f.sub(/.html$/, '')]}.
     join(' ')
