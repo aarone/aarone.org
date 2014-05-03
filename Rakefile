@@ -58,7 +58,7 @@ namespace :timeline do
 
   desc 'confirms that the timeline is in an expected state'
   task :sanity_check do
-    raise "no timeline images found; run 'rake build_timeline_images' to download and build the images" unless File.exist?(File.join(timeline_images_directory, "2007/aaron.jpg"))
+    raise "no timeline images found; run 'rake timeline:download_originals' to download and build the images" unless File.exist?(File.join(timeline_images_directory, "2007/aaron.jpg"))
   end
 
 end
@@ -82,7 +82,7 @@ task :gzip_files do
 end
 
 task :jekyll_build do
-  system("jekyll build --trace") || raise("command failed; cannot find jekyll?")
+  system("jekyll build --trace") || raise("command failed; may jekyll isn't installed or is an old version?")
 end
 
 task :build => [:clean, :jekyll_build]
@@ -120,4 +120,4 @@ end
 
 task :clean => ['timeline:clean', :clean_site]
 
-task :default => ['timeline:sanity_check', :generate]
+task :default => ['timeline:sanity_check', :jekyll_build]
