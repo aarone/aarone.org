@@ -87,20 +87,26 @@ end
 
 task :build => [:clean, :jekyll_build]
 
-desc 'uses s3cmd instead of random ruby stuff'
-task :upload => [:build, :strip_html_extensions, :gzip_files] do
-  html_file_includes = Dir.glob('_site/**/*.html').
+def execute_command command_with_args
+  puts command_with_args
+  system command_with_args
+end
+
+desc 'use s3cmd to upload files to S3'
+task :publish => [:build, :strip_html_extensions, :gzip_files] do
+  html_files = Dir.glob('_site/**/*.html').
     flat_map {|f| [f, f.sub(/.html$/, '')]}.
-    flat_map {|f| f.sub('_site/', '')}.
-    collect { |f| "--include '#{f}' "}.
     join(' ')
 
   one_minute = 60
   one_day = 60*60*24
   thirty_days = one_day * 30
-  command = "s3cmd sync  --progress -M --acl-public  --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{one_minute}' -m 'text/html'  --cf-invalidate-default-index --cf-invalidate  _site/ s3://#{bucket_name}/ --exclude '*.*' #{html_file_includes}"
-  puts command
-  system command
+
+  # it would be great to use sync instead of put but s3cmd will not
+  # set mime types properly using sync
+  execute_command "s3cmd put  --progress --acl-public   --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{one_minute}' -m 'text/html'  --cf-invalidate-default-index --cf-invalidate  #{html_files} s3://#{bucket_name}/"
+
+  execute_command "s3cmd put  --progress --acl-public   --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{one_day}' -m 'text/plain'  --cf-invalidate-default-index --cf-invalidate _site/aaron@aarone.org.pub s3://#{bucket_name}/"
 
   {
     'css' => ['text/css', one_day],
@@ -108,9 +114,12 @@ task :upload => [:build, :strip_html_extensions, :gzip_files] do
     'gif' => ['image/gif', thirty_days],
     'jpg' => ['image/jpeg', thirty_days]
   }.each do |extension, (content_type, max_age)|
-    command = "s3cmd sync  --progress -M --acl-public  --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{max_age}' -m '#{content_type}'  --cf-invalidate  _site/ s3://#{bucket_name}/ --exclude '*.*' --include '*.#{extension}'"
-    puts command
-    system command
+    files = Dir.glob("_site/**/*.#{extension}")
+    files.each do |file|
+
+      remote_path = file.sub(/_site\//, '')
+      execute_command  "s3cmd put --progress --acl-public  --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{max_age}' -m '#{content_type}'  --cf-invalidate  #{file} s3://#{bucket_name}/#{remote_path}"
+    end
   end
 end
 
