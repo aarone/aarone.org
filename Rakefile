@@ -107,9 +107,9 @@ task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
 
   # it would be great to use sync instead of put but s3cmd will not
   # set mime types properly using sync
-  execute_command "s3cmd put  --progress --acl-public   --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{one_minute}' -m 'text/html'  --cf-invalidate-default-index --cf-invalidate  #{html_files} s3://#{bucket_name}/"
+  execute_command "s3cmd put  --progress --acl-public   --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: public, max-age=#{one_day}' -m 'text/html; charset=utf-8'  --cf-invalidate-default-index --cf-invalidate  #{html_files} s3://#{bucket_name}/"
 
-  execute_command "s3cmd put  --progress --acl-public   --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{one_day}' -m 'text/plain'  --cf-invalidate-default-index --cf-invalidate _site/aaron@aarone.org.pub s3://#{bucket_name}/"
+  execute_command "s3cmd put  --progress --acl-public   --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: public, max-age=#{one_day}' -m 'text/plain; charset=utf-8'  --cf-invalidate-default-index --cf-invalidate _site/aaron@aarone.org.pub s3://#{bucket_name}/"
 
   {
     'css' => ['text/css', one_day],
