@@ -9,7 +9,6 @@ def root
   File.dirname(__FILE__)
 end
 
-
 def bucket_name
   'www.aarone.org'
 end
@@ -82,7 +81,8 @@ task :gzip_files do
 end
 
 task :jekyll_build do
-  output = `jekyll build --trace 2>&1`
+  
+  output = `bundle exec jekyll build --trace 2>&1`
   raise("command failed: #{output}") unless $?.success?
 end
 
@@ -93,6 +93,8 @@ def execute_command cmd
 end
 
 task :build => [:clean, :jekyll_build]
+
+task :build_with_timeline => [:clean, 'timeline:build_images', :jekyll_build]
 
 desc 'uses s3cmd instead of random ruby stuff'
 task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
