@@ -3,6 +3,7 @@
 body {
   background-color: white;
   font-family: 'Lato', serif;
+  font-size: 1.1em;
   color: rgb(51, 56, 74);
 }
 
@@ -23,22 +24,18 @@ img#aaron {
 }
 
 #page {
-  padding-top: 20%;
+  padding-top: 15%;
   margin: 0 auto;
   max-width: 550px;
 }
 
 h1 {
   margin: 0;
+  font-size: 2.5em;
 }
 
 header {
   text-align: center;
-}
-
-section {
-  padding: 1em;
-  padding-top: 1em;
 }
 
 section ul {
@@ -48,6 +45,10 @@ section ul {
   margin-right: 0;
   padding-left: 0;
   padding-right: 0;
+}
+
+section ul li {
+    padding-top: 0.5em;
 }
 
 @media screen and (max-height: 700px) {
