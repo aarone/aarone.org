@@ -5,7 +5,8 @@ body {
 }
 
 .container {
-  padding: 1em;
+    padding: 1em;
+    padding-top: 2em;
 }
 
 a:visited, a:link, a:hover {
