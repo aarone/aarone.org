@@ -5,8 +5,13 @@ body {
 }
 
 .container {
-    padding: 1em;
-    padding-top: 2em;
+  padding: 1em;
+  padding-top: 2em;
+}
+
+
+ul#contact-info li {
+  margin-bottom: 4px;
 }
 
 a:visited, a:link, a:hover {
@@ -69,17 +74,16 @@ ul.multicolumn_list {
 
 @media print {
 
-  /* column-count doesn't work when printing
-     https://code.google.com/p/chromium/issues/detail?id=99358
-   */
-  ul.multicolumn_list {
-    width: 100%;
+  @page { size: portrait }
+
+  /* cause content to display in a single column with less dead whitespace */
+  .container {
+    width: 800px
   }
 
-  ul.multicolumn_list li {
-    float: left;
-    width: 25%;
-  }
+  /* column-count doesn't work when printing in chrome
+     https://code.google.com/p/chromium/issues/detail?id=99358
+   */
 
   a:link, a:visited, a:hover, a:active {
     text-decoration: none;
