@@ -5,6 +5,7 @@ body {
   font-family: 'Lato', serif;
   font-size: 1.1em;
   color: rgb(51, 56, 74);
+  background-color: #eee;
 }
 
 a:link, a:visited, a:hover, a:active {

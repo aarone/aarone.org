@@ -1,8 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #eee;
+  color: #222;
 }
 
 #page {
@@ -15,7 +16,7 @@ header {
 }
 
 header > p {
-  max-width: 600px;
+  max-width: 800px;
 }
 
 #timeline {
@@ -84,6 +85,9 @@ footer {
 @media screen and (max-width: 700px) {
   header {
     margin: 0em;
+  }
+  header > p {
+    font-size: 0.9em;
   }
   #timeline {
     font-size: 0.6em;
