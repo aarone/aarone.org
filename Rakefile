@@ -30,7 +30,7 @@ namespace :timeline do
   desc 'download original timeline images from S3'
   task :download_originals do
     FileUtils.mkdir_p timeline_images_directory
-    %x[ s3cmd get -r s3://aarone.org.timeline/timeline/ #{timeline_images_directory} ]
+    %x[ aws --profile aarone.org --region us-west-2 s3 sync s3://aarone.org.timeline/timeline/ #{timeline_images_directory} ]
   end
 
   desc 'generate timeline thumbnails (assumes originals exist)'
@@ -81,7 +81,7 @@ task :gzip_files do
 end
 
 task :jekyll_build do
-  
+
   output = `bundle exec jekyll build --trace 2>&1`
   raise("command failed: #{output}") unless $?.success?
 end
@@ -96,22 +96,20 @@ task :build => [:clean, :jekyll_build]
 
 task :build_with_timeline => [:clean, 'timeline:build_images', :jekyll_build]
 
-desc 'uses s3cmd instead of random ruby stuff'
+desc 'uses aws cli instead of ruby'
 task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
-  # include .html files and their extensionless variants
-  html_files = Dir.glob('_site/**/*.html').
-    flat_map {|f| [f, f.sub(/.html$/, '')]}.
-    join(' ')
 
   one_minute = 60
   one_day = 60*60*24
   thirty_days = one_day * 30
 
-  # it would be great to use sync instead of put but s3cmd will not
-  # set mime types properly using sync
-  execute_command "s3cmd put  --progress --acl-public   --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: public, max-age=#{one_day}' -m 'text/html; charset=utf-8'  --cf-invalidate-default-index --cf-invalidate  #{html_files} s3://#{bucket_name}/"
+  html_files = Dir.glob('_site/**/*.html').
+    flat_map {|f| [f, f.sub(/.html$/, '')]}.
+    each do |file|
 
-  execute_command "s3cmd put  --progress --acl-public   --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: public, max-age=#{one_day}' -m 'text/plain; charset=utf-8'  --cf-invalidate-default-index --cf-invalidate _site/aaron@aarone.org.pub s3://#{bucket_name}/"
+    target_path = file.sub(/^_site\//, '')
+    execute_command  "aws s3 cp --region us-east-1 --profile aarone.org --no-guess-mime-type --acl public-read --content-encoding 'gzip' --cache-control 'max-age=#{one_day}' --content-type 'text/html' #{file} s3://#{bucket_name}/#{target_path}"
+  end
 
   {
     'css' => ['text/css', one_day],
@@ -119,13 +117,11 @@ task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
     'gif' => ['image/gif', thirty_days],
     'jpg' => ['image/jpeg', thirty_days]
   }.each do |extension, (content_type, max_age)|
-    files = Dir.glob("_site/**/*.#{extension}")
-    files.each do |file|
-
-      remote_path = file.sub(/_site\//, '')
-      execute_command  "s3cmd put --progress --acl-public  --add-header 'Content-Encoding:gzip' --add-header 'Cache-Control: max-age=#{max_age}' -m '#{content_type}'  --cf-invalidate  #{file} s3://#{bucket_name}/#{remote_path}"
-    end
+    execute_command  "aws s3 sync --region us-east-1 --profile aarone.org --no-guess-mime-type --acl public-read --content-encoding 'gzip' --cache-control 'max-age=#{max_age}' --content-type '#{content_type}' --exclude '*' --include '*.#{extension}' _site/ s3://#{bucket_name}/"
   end
+
+  execute_command "aws cloudfront --profile aarone.org create-invalidation --cli-input-json '{\"DistributionId\":\"E1191IBNM48QBG\",\"InvalidationBatch\":{\"Paths\":{\"Quantity\":1,\"Items\":[\"/*\"]},\"CallerReference\":\"invalidation\"}}'"
+
 end
 
 task :clean_site do
