@@ -52,7 +52,7 @@ namespace :timeline do
 
   desc 'removes timeline images'
   task :clean do
-    timeline.clean!
+    # timeline.clean!
   end
 
   desc 'confirms that the timeline is in an expected state'
