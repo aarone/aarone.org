@@ -1,9 +1,10 @@
 
 var processInfo = NSProcessInfo.processInfo();
 
-var dimension =  parseInt(processInfo.arguments()[2]);
-var inputPath = processInfo.arguments()[3];
-var outputPath = processInfo.arguments()[4];
+var args = processInfo.arguments();
+var dimension = args[2];
+var inputPath = args[3];
+var outputPath = args[4];
 
 var acorn = JSTalk.application("Acorn");
 var image = acorn.open_(inputPath);
