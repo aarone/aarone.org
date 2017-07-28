@@ -12,6 +12,10 @@ a:link, a:visited, a:hover, a:active {
   color: rgb(51, 56, 74);
 }
 
+h2 {
+  font-size: 1.8em;
+}
+
 .col {
   display: block;
   float: left;
