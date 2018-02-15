@@ -120,8 +120,7 @@ task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
     execute_command  "aws s3 sync --region us-east-1 --profile aarone.org --no-guess-mime-type --acl public-read --content-encoding 'gzip' --cache-control 'max-age=#{max_age}' --content-type '#{content_type}' --exclude '*' --include '*.#{extension}' _site/ s3://#{bucket_name}/"
   end
 
-  execute_command "aws cloudfront --profile aarone.org create-invalidation --cli-input-json '{\"DistributionId\":\"E1191IBNM48QBG\",\"InvalidationBatch\":{\"Paths\":{\"Quantity\":1,\"Items\":[\"/*\"]},\"CallerReference\":\"invalidation\"}}'"
-
+  execute_command "aws cloudfront --profile aarone.org create-invalidation --distribution-id E1191IBNM48QBG --paths '/*'"
 end
 
 task :clean_site do
