@@ -1,52 +1,66 @@
-body {
-  background-color: white;
-  color: #222;
-  font-size: 0.9em;
+body { 
+    background-color: #fafafa;
+    color: #1d1d1d;
+    margin: 2em;
 }
 
 .container {
-  padding: 1em;
   padding-top: 2em;
 }
 
+.row {
+    margin-top: 1em;
+}
+
+section {
+    margin-top: 2em;
+}
 
 ul#contact-info li {
-  margin-bottom: 4px;
+    margin-bottom: 0em;
+}
+
+ul#summary li {
+    margin-bottom: 0.7em;
+}
+
+ul, ul ul {
+    list-style-type: none;
+    font-size: 1.0em;
+} 
+
+ul.accomplishments {
+    margin-top: 1em;
+    list-style-type: disc;
 }
 
 a:visited, a:link, a:hover {
-  color: #003;
-}
-
-#summary {
-  margin-top: 2em;
+  color: #1d1d1d;
 }
 
 .timeframe {
-  font-style: italic;
+    font-style: italic;
+}
+
+span.timeframe {
+    float: right;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 h3 {
   font-size: 1.3em;
   padding: 0;
   margin: 0;
-  font-style: italic;
+  font-style: normal;
 }
 
 h4 {
-  font-size: 1.2em;
-}
-
-ul.accomplishments {
-  list-style-type: circle;
-}
-
-ul ul {
-  font-size: 100%;
+    font-size: 1.2em;
+    margin: 0em;
+    display: inline;
 }
 
 ul.multicolumn_list {
@@ -69,7 +83,12 @@ ul.multicolumn_list {
   .container {
     padding: 0;
   }
-
+  #summary, section {
+    margin-top: 0em;
+  }
+  span.timeframe {
+    float: none;
+  }
 }
 
 @media print {

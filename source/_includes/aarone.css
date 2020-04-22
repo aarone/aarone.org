@@ -1,69 +1,31 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
-
 body {
-  background-color: white;
-  font-family: 'Lato', serif;
-  font-size: 1.1em;
-  color: rgb(51, 56, 74);
-  background-color: #eee;
+  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial", sans-serif;
+  font-weight: 400;
+  color: #1d1d1d;
+  background-color: #fafafa;
+  margin-top: 2em;
 }
 
 a:link, a:visited, a:hover, a:active {
-  color: rgb(51, 56, 74);
+    color: rgb(51, 56, 74);
 }
 
-h2 {
-  font-size: 1.8em;
-}
-
-.col {
-  display: block;
-  float: left;
-  width: 50%;
-  margin: 0 auto;
+.container {
+    text-align: center;
+    width: 50%;
 }
 
 img#aaron {
-  width: 100%;
-  max-width: 200px;
+    max-width:  120px;
+    text-align: right;
 }
 
-#page {
-  padding-top: 15%;
-  margin: 0 auto;
-  max-width: 550px;
+h2 {
+    font-weight: 400;
 }
 
-h1 {
-  margin: 0;
-  font-size: 2.5em;
+ul {
+    text-align: left;
+    padding-left: 2em;
 }
 
-header {
-  text-align: center;
-}
-
-section ul {
-  list-style-type: none;
-  text-align: center;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-section ul li {
-    padding-top: 0.5em;
-}
-
-@media screen and (max-height: 700px) {
-  #page {
-    padding-top: 10%;
-  }
-}
-
-@media screen and (max-height: 400px) {
-  #page {
-    padding-top: 1em;
-  }
-}
