@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # https://github.com/jekyll/jekyll/issues/2327
 gem 'jekyll'
 
-gem 'aws-sdk'
 gem 'haml'
 gem 'sass'
 
