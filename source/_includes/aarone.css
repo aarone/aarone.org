@@ -1,23 +1,26 @@
 body {
-  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial", sans-serif;
   font-weight: 400;
   color: #1d1d1d;
   background-color: #fafafa;
   margin-top: 2em;
+  font-size: 1.7em;
 }
 
 a:link, a:visited, a:hover, a:active {
     color: rgb(51, 56, 74);
 }
 
+section {
+    margin-top: 1em;
+}
+
 .container {
     text-align: center;
-    width: 50%;
+    max-width: 500px;
 }
 
 img#aaron {
-    max-width:  120px;
-    text-align: right;
+    max-width: 120px;
 }
 
 h2 {
@@ -25,7 +28,8 @@ h2 {
 }
 
 ul {
-    text-align: left;
-    padding-left: 2em;
+    list-style: none;
+    text-align: center;
+    padding-left: 0em;
 }
 
