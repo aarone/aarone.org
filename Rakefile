@@ -1,9 +1,4 @@
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), *%w[lib]))
-
-require 'aarone'
 require 'fileutils'
-
-include Aarone
 
 def root
   File.dirname(__FILE__)
@@ -11,6 +6,10 @@ end
 
 def bucket_name
   'www.aarone.org'
+end
+
+def aws_cli_profile
+  'aarone.org'
 end
 
 namespace :timeline do
@@ -23,36 +22,42 @@ namespace :timeline do
     Timeline.new(timeline_images_directory)
   end
 
-  # generating timeline images requires a bunch of dependencies:
-  # 1) ImageMagick
-  # 2) jstalk in your path
-  # 3) Acorn
+  task :acorn_install_check do
+    raise "Need to install Acorn to prepare images: https://flyingmeat.com/acorn/" unless File.exists? '/Applications/Acorn.app'
+  end
+
+  # generating timeline images requires Acorn
   desc 'download original timeline images from S3'
   task :download_originals do
     FileUtils.mkdir_p timeline_images_directory
-    %x[ aws --profile aarone.org --region us-west-2 s3 sync s3://aarone.org.timeline/timeline/ #{timeline_images_directory} ]
+    execute_command "aws --profile #{aws_cli_profile} --region us-west-2 s3 sync s3://aarone.org.timeline/timeline/ #{timeline_images_directory}"
   end
 
   desc 'generate timeline thumbnails (assumes originals exist)'
   # invoke as rake 'timeline:generate_thumbnails[2014]' to only
   # generate thumbnails with 2014 in the path
-  task :generate_thumbnails, :filter_regex do |task,args|
-    images_matching = if args.filter_regex
-                        Regexp.new(args.filter_regex)
-                      else
-                        Regexp.new('.*')
-                      end
+  task :generate_thumbnails => :acorn_install_check
+  task :generate_thumbnails, :filter_regex  do |task,args|
+    filter = if args.filter_regex then Regexp.new('.*') else Regexp.new('.*') end
 
-    puts "generating with regex #{images_matching}"
-    timeline.generate_tumbnails! images_matching
+    Dir.glob(root + '/source/images/timeline/**/*')
+      .select { |file| file.end_with?('.jpg') && file.include?("-full") && filter.match(file) }
+      .each do |file|
+      
+      dimension = 350
+      scaled_filename = File.join(File.dirname(file), File.basename(file).sub(/\-full/, ''))
+      command = "bin/acorn-scale-to-width #{dimension} #{file} #{scaled_filename}"
+      output = execute_command command
+      raise "image scaling failed: #{output}" unless $?.exitstatus == 0
+    end    
   end
 
   desc 'download timeline images from S3 and generate thumbnails'
-  task :build_images => [:download_originals, :generate_thumbnails, :sanity_check]
+  task :build => [:download_originals, :generate_thumbnails, :sanity_check]
 
-  desc 'removes timeline images'
+  desc 'cleans up timeline images'
   task :clean do
-    # timeline.clean!
+    FileUtils.rm_rf('source/images/timeline')
   end
 
   desc 'confirms that the timeline is in an expected state'
@@ -81,9 +86,7 @@ task :gzip_files do
 end
 
 task :jekyll_build do
-
-  output = `bundle exec jekyll build --trace 2>&1`
-  raise("command failed: #{output}") unless $?.success?
+  execute_command "jekyll build --trace"
 end
 
 def execute_command cmd
@@ -92,15 +95,13 @@ def execute_command cmd
   raise("command failed: #{output}") unless $?.success?
 end
 
-task :build => [:clean, :jekyll_build]
+task :build => ['timeline:build', :jekyll_build]
 
-task :build_with_timeline => [:clean, 'timeline:build_images', :jekyll_build]
-
-desc 'uses aws cli instead of ruby'
-task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
+desc 'Publish files to S3'
+task :publish => [:build, :copy_html_files_as_extensionless, :gzip_files] do
 
   one_minute = 60
-  one_day = 60*60*24
+  one_day = 60 * 60 * 24
   thirty_days = one_day * 30
 
   html_files = Dir.glob('_site/**/*.html').
@@ -108,7 +109,7 @@ task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
     each do |file|
 
     target_path = file.sub(/^_site\//, '')
-    execute_command  "aws s3 cp --region us-east-1 --profile aarone.org --no-guess-mime-type --acl public-read --content-encoding 'gzip' --cache-control 'max-age=#{one_day}' --content-type 'text/html' #{file} s3://#{bucket_name}/#{target_path}"
+    execute_command  "aws s3 cp --region us-east-1 --profile #{aws_cli_profile} --no-guess-mime-type --acl public-read --content-encoding 'gzip' --cache-control 'max-age=#{one_day}' --content-type 'text/html' #{file} s3://#{bucket_name}/#{target_path}"
   end
 
   {
@@ -117,10 +118,10 @@ task :upload => [:build, :copy_html_files_as_extensionless, :gzip_files] do
     'gif' => ['image/gif', thirty_days],
     'jpg' => ['image/jpeg', thirty_days]
   }.each do |extension, (content_type, max_age)|
-    execute_command  "aws s3 sync --region us-east-1 --profile aarone.org --no-guess-mime-type --acl public-read --content-encoding 'gzip' --cache-control 'max-age=#{max_age}' --content-type '#{content_type}' --exclude '*' --include '*.#{extension}' _site/ s3://#{bucket_name}/"
+    execute_command  "aws s3 sync --region us-east-1 --profile #{aws_cli_profile} --no-guess-mime-type --acl public-read --content-encoding 'gzip' --cache-control 'max-age=#{max_age}' --content-type '#{content_type}' --exclude '*' --include '*.#{extension}' _site/ s3://#{bucket_name}/"
   end
 
-  execute_command "aws cloudfront --profile aarone.org create-invalidation --distribution-id E1191IBNM48QBG --paths '/*'"
+  execute_command "aws cloudfront --profile #{aws_cli_profile} create-invalidation --distribution-id E1191IBNM48QBG --paths '/*'"
 end
 
 task :clean_site do

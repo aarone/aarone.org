@@ -1,0 +1,28 @@
+#!/usr/bin/osascript -l JavaScript
+-*- mode: javascript -*-
+
+function run(argv) {
+    var Acorn = new Application("/Applications/Acorn.app");
+    Acorn.includeStandardAdditions = true
+    
+    if (argv.length != 3) {
+	Acorn.displayDialog("Usage: ./acorn-scale-to-width <dimension> <input-path> <output-path>");
+	return;
+    }
+
+    var dimension = argv[0];
+    var inputPath = argv[1];
+    var outputPath = argv[2];
+
+    var image = Acorn.open(inputPath);
+    var minDimension = Math.min(image.width(), image.height());
+
+    /* crop to square centered in the middle of image */
+    var x = Math.floor(image.width() / 2 - minDimension / 2);
+    var y = Math.floor(image.height() / 2 - minDimension / 2);
+    image.crop({rect: [x,y, minDimension, minDimension]});
+
+    image.resizeImage({'width': dimension});
+    image.webExport({'as': 'JPEG', 'quality': 80, 'in': outputPath});
+    image.close({saving: 'no'});
+}
