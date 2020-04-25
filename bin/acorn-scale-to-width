@@ -1,5 +1,5 @@
 #!/usr/bin/osascript -l JavaScript
--*- mode: javascript -*-
+// -*- mode: javascript -*-
 
 function run(argv) {
     var Acorn = new Application("/Applications/Acorn.app");
