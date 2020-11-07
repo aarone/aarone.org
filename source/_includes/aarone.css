@@ -11,7 +11,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 section {
-    margin-top: 1em;
+    margin-top: 0em;
 }
 
 .container {
@@ -20,11 +20,12 @@ section {
 }
 
 img#aaron {
-    max-width: 120px;
+    max-width: 190px;
 }
 
 h2 {
     font-weight: 400;
+    margin-bottom: 0.5em;
 }
 
 ul {
