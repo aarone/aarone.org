@@ -95,7 +95,7 @@ def execute_command cmd
   raise("command failed: #{output}") unless $?.success?
 end
 
-task :build => ['timeline:build', :jekyll_build]
+task :build => [:jekyll_build]
 
 desc 'Publish files to S3'
 task :publish => [:build, :copy_html_files_as_extensionless, :gzip_files] do
