@@ -37,11 +37,14 @@ namespace :timeline do
   # invoke as rake 'timeline:generate_thumbnails[2014]' to only
   # generate thumbnails with 2014 in the path
   task :generate_thumbnails => :acorn_install_check
-  task :generate_thumbnails, :filter_regex  do |task,args|
-    filter = if args.filter_regex then Regexp.new('.*') else Regexp.new('.*') end
+  task :generate_thumbnails, :filter_substring  do |task,args|
 
+    puts args.filter_substring
     Dir.glob(root + '/source/images/timeline/**/*')
-      .select { |file| file.end_with?('.jpg') && file.include?("-full") && filter.match(file) }
+      .select { |file|
+       file.end_with?('.jpg') &&
+                file.include?("-full") &&
+                (args.filter_substring.nil? || file.include?(args.filter_substring)) }
       .each do |file|
       
       dimension = 350
