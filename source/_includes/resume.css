@@ -94,8 +94,8 @@ ul.multicolumn_list {
 	padding: 0;
     }
     
-    #summary, section {
-	margin-top: 0em;
+    #summary, .section {
+	margin-top: 1em;
     }
     
     span.timeframe {
@@ -114,7 +114,7 @@ ul.multicolumn_list {
     body {
 	margin: 0rem;
 	padding: 0rem;
-	font-size: 0.95em;
+	font-size: 1.3em;
     }
 
     .row {
