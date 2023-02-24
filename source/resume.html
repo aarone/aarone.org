@@ -5,228 +5,250 @@ title: Aaron Evans
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Aaron Evans - Resume</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css">
-    <style>
-        {%include resume.css %}
-    </style>
+  <title>Aaron Evans - Resume</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css">
+  <style>
+    {% include  resume.css  %}
+  </style>
 </head>
 <body>
 <div class="container">
-    <header>
-        <section id="intro">
-            <div class="row">
-                <div itemscope itemtype="https://schema.org/Person">
-                    <div class="three columns">
-                        <h2>
-                            <span itemprop="name">Aaron Evans</span>
-                        </h2>
-                        <ul id="contact-info">
-                            <li itemscope itemtype="https://schema.org/PostalAddress">
+  <header>
+    <section id="intro">
+      <div itemscope itemtype="https://schema.org/Person">
+        <h2>
+          <span itemprop="name">Aaron Evans</span>
+        </h2>
+        <ul id="contact-info">
+          <li itemscope itemtype="https://schema.org/PostalAddress">
                                 <span itemprop="AddressLocality">
                                   Philadelphia,
                                 </span>
-                                <span itemprop="addressRegion">PA</span>
-                            </li>
-                            <li>
-                                <a href="mailto:aaron@aarone.org"><span itemprop="email">aaron@aarone.org</span></a>
-                            </li>
-                            <li>
-                                <a itemprop="url" href="//www.aarone.org">www.aarone.org</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="nine columns" id="summary">
-			  I'm a software developer with over 15 years of experience building systems and services at scale.
-			  
-			  I have worked at companies of various size and technical maturity.
-			  
-			  I spent years at Amazon helping build, scale, and improve parts of AWS and EC2 focusing on server provisioning, monitoring, and deployment safety.
+            <span itemprop="addressRegion">PA</span>
+          </li>
+          <li>
+            <a href="mailto:aaron@aarone.org"><span itemprop="email">aaron@aarone.org</span></a>
+          </li>
+          <li>
+            <a itemprop="url" href="//www.aarone.org">www.aarone.org</a>
+          </li>
+        </ul>
+        I'm a software developer with over 15 years of experience building systems and services at
+        scale.
 
-			  I'm a good writer and able to influence teams and organizations.
+        I have worked at companies of various size and technical maturity.
 
-			  I like coding, making an impact, learning new things, and helping my teammates grow.
-                    </div>
-                </div>
-            </div>
-        </section>
-    </header>
+        I spent years at Amazon helping build, scale, and improve parts of AWS and EC2 focusing on
+        server provisioning, monitoring, and deployment safety.
 
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="https://www.cedarai.com/">Cedar AI</a>
-                </h3>
-                <div class="timeframe">2021 - present</div>
-            </div>
-            <div class="nine columns">
-                <ul class="accomplishments">
-                    <li>Part of a small team of engineers building a transportation management system and interline-settlement system for freight rail carriers.</li>
-                    <li>Designed and built a data ingestion pipeline for rail car equipment information.</li>
-                    <li>Built gRPC-web services for users to manage and publish shipping rates and participate in <a href="https://public.railinc.com/products-services/interline-settlement-system">ISS</a>.</li>
-                    <li>Built tools and libraries for parsing, processing, and serializing X12 EDI using Protocol Buffers</li>
-                    <li>Helped to add company-wide processes as needed to keep everyone moving in the same direction</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="https://www.tableau.com/">Tableau</a>
-                </h3>
-                <div class="timeframe">2020 - 2021</div>
-            </div>
-            <div class="nine columns">
-                <ul class="accomplishments">
-                    <li>Owned a web site and backend services for managing Tableau Online Sites</li>
-                    <li>Defined the target architecture and transition plan to migrate from a monolithic system to a workflow-based orchestration system to manage site life-cycle operations.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="https://www.amazon.com/">Amazon</a>
-                </h3>
-                <div class="timeframe">2015 - 2020</div>
-            </div>
-            <div class="nine columns">
-                <ul class="accomplishments">
-                    <li>
-		      Engineering lead for A to Z, Amazon's self-service HR system for its 1M+ hourly employees.
-		      Provided leadership across 3 teams and ~35 engineers.
-		      Helped define interfaces across organizations to reduce development bottlenecks.
-		      Re-designed a worker ontology system to control how features are mapped to users.
-                    </li>
-                    <li>
-		      Owned <a
-                            href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceStatus.html">the
-                        customer-facing EC2 instance health API</a> and underlying monitoring systems.
-                        Successfully launched a system re-architecture to resolve a critical scaling bottleneck for
-                        customer-facing EC2 instance health metrics.
-                    <li>
-		      Took ownership and repaired some older systems in need of TLC related to the EC2 data-plane
-                      build and release process.
-                    </li>
-                    <li>Proposed and implemented changes to the EC2 data-plane release process that reduced customer-impacting outages related to deployments.
-                    </li>
-		    <li>
-		      Bar raiser with more than 1200 interviews over 6 years.
-		    </li>
-                </ul>
-            </div>
-        </div>
+        I'm a good writer and able to influence teams and organizations.
 
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="https://www.twosigma.com/">Two Sigma Investments</a>
-                </h3>
-                <div class="timeframe">2014 - 2015</div>
-            </div>
-            <div class="nine columns">
-                <ul class="accomplishments">
-                    <li>Worked on an <a href="http://en.wikipedia.org/wiki/Alpha_capture_system">alpha capture system</a>.</li>
-                    <li>Automated a release and deployment process using <a
-                            href="http://www.ansible.com/home">Ansible</a>. Took a manual, multi-step process and
-                        transformed it into an automated, single-step process.
-                    </li>
-                    <li>Re-designed and implemented login and session management across multiple sites.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="http://aws.amazon.com/">Amazon</a>
-                </h3>
-                <div class="timeframe">2009 - 2014</div>
-            </div>
-            <div class="nine columns">
-              <ul class="accomplishments">
-                <li>Designed and implemented a system to automate multi-region tasks across AWS</li>
-                <li>Lead/founding developer on a team that built systems to standardize the infrastructure hardware ordering process. Helped grow the team from 3 to 15 developers in a year.</li>
-                <li>Designed and implemented RESTful web services for Amazon's server provisioning system</li>
-                <li>Added support for EC2 capacity into the server provisioning system to allow teams to adopt AWS and EC2</li>
-		<li>Typical SDE on-call operational duties</li>
-	      </ul>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="http://en.wikipedia.org/wiki/Comcast_Interactive_Media">Comcast Interactive Media</a>
-                </h3>
-                <div class="timeframe">2006 - 2009</div>
-            </div>
-            <div class="nine columns">
-                <ul class="accomplishments">
-                    <li>Developed features for a homegrown CMS supporting <a href="http://xfinity.comcast.net/">comcast.net</a>
-                        and <a href="http://xfinitytv.comcast.net/">fancast.com</a></li>
-                    <li>Developed user interfaces and publishing systems for editors to manage content</li>
-                    <li>Wrote software to ingest syndicated news content from various news sources</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="http://www.infoplusonline.com/">Bristol Capital, Inc</a>
-                </h3>
-                <div class="timeframe">2005 - 2006</div>
-            </div>
-            <div class="nine columns">
-                <ul class="accomplishments">
-                    <li>Developed telephone system (PBX) reporting software for internal Mac OS X applications</li>
-                    <li>Parsed and imported telephone switch traffic data into a PostgreSQL database</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="http://cis.upenn.edu/">University of Pennsylvania</a>
-                </h3>
-                <div class="timeframe">2002 - 2005</div>
-                <em>Research Assistant/Ph.D. Student</em>
-            </div>
-        </div>
+        I like coding, making an impact, learning new things, and helping my teammates grow.
+      </div>
     </section>
+  </header>
 
-    <section>
-        <h2>Education</h2>
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="http://cis.upenn.edu/">University of Pennsylvania</a>
-                </h3>
-            </div>
-            <div class="nine columns">
-                Master of Arts and Science
-                <br>
-                Major: Computer Science
-            </div>
-        </div>
-        <div class="row">
-            <div class="three columns">
-                <h3>
-                    <a href="http://www.villanova.edu">Villanova University</a>
-                </h3>
-            </div>
-            <div class="nine columns">
-                Bachelor of Science and Engineering
-                <br>
-                Major: Computer Engineering
-            </div>
-        </div>
-    </section>
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="https://www.cedarai.com/">Cedar AI</a>
+        </h3>
+        <div class="timeframe">2021 - present</div>
+      </div>
+      <div class="nine columns">
+        <ul class="accomplishments">
+          <li>Part of a small team of engineers building a transportation management system and
+            interline-settlement system for freight rail carriers.
+          </li>
+          <li>Designed and built a data ingestion pipeline for rail car equipment information.</li>
+          <li>Built gRPC-web services for users to manage and publish shipping rates and participate
+            in <a href="https://public.railinc.com/products-services/interline-settlement-system">ISS</a>.
+          </li>
+          <li>Built tools and libraries for parsing, processing, and serializing X12 EDI using
+            Protocol Buffers
+          </li>
+          <li>Helped to add company-wide processes as needed to keep everyone moving in the same
+            direction
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="https://www.tableau.com/">Tableau</a>
+        </h3>
+        <div class="timeframe">2020 - 2021</div>
+      </div>
+      <div class="nine columns">
+        <ul class="accomplishments">
+          <li>Owned a web site and backend services for managing Tableau Online Sites</li>
+          <li>Defined the target architecture and transition plan to migrate from a monolithic
+            system to a workflow-based orchestration system to manage site life-cycle operations.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="https://www.amazon.com/">Amazon</a>
+        </h3>
+        <div class="timeframe">2015 - 2020</div>
+      </div>
+      <div class="nine columns">
+        <ul class="accomplishments">
+          <li>
+            Engineering lead for A to Z, Amazon's self-service HR system for its 1M+ hourly
+            employees.
+            Provided leadership across 3 teams and ~35 engineers.
+            Helped define interfaces across organizations to reduce development bottlenecks.
+            Re-designed a worker ontology system to control how features are mapped to users.
+          </li>
+          <li>
+            Owned <a
+              href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceStatus.html">the
+            customer-facing EC2 instance health API</a> and underlying monitoring systems.
+            Successfully launched a system re-architecture to resolve a critical scaling bottleneck
+            for
+            customer-facing EC2 instance health metrics.
+          <li>
+            Took ownership and repaired some older systems in need of TLC related to the EC2
+            data-plane
+            build and release process.
+          </li>
+          <li>Proposed and implemented changes to the EC2 data-plane release process that reduced
+            customer-impacting outages related to deployments.
+          </li>
+          <li>
+            Bar raiser with more than 1200 interviews over 6 years.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="https://www.twosigma.com/">Two Sigma Investments</a>
+        </h3>
+        <div class="timeframe">2014 - 2015</div>
+      </div>
+      <div class="nine columns">
+        <ul class="accomplishments">
+          <li>Worked on an <a href="http://en.wikipedia.org/wiki/Alpha_capture_system">alpha capture
+            system</a>.
+          </li>
+          <li>Automated a release and deployment process using <a
+              href="http://www.ansible.com/home">Ansible</a>. Took a manual, multi-step process and
+            transformed it into an automated, single-step process.
+          </li>
+          <li>Re-designed and implemented login and session management across multiple sites.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="http://aws.amazon.com/">Amazon</a>
+        </h3>
+        <div class="timeframe">2009 - 2014</div>
+      </div>
+      <div class="nine columns">
+        <ul class="accomplishments">
+          <li>Designed and implemented a system to automate multi-region tasks across AWS</li>
+          <li>Lead/founding developer on a team that built systems to standardize the infrastructure
+            hardware ordering process. Helped grow the team from 3 to 15 developers in a year.
+          </li>
+          <li>Designed and implemented RESTful web services for Amazon's server provisioning
+            system
+          </li>
+          <li>Added support for EC2 capacity into the server provisioning system to allow teams to
+            adopt AWS and EC2
+          </li>
+          <li>Typical SDE on-call operational duties</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="http://en.wikipedia.org/wiki/Comcast_Interactive_Media">Comcast Interactive
+            Media</a>
+        </h3>
+        <div class="timeframe">2006 - 2009</div>
+      </div>
+      <div class="nine columns">
+        <ul class="accomplishments">
+          <li>Developed features for a homegrown CMS supporting <a
+              href="http://xfinity.comcast.net/">comcast.net</a>
+            and <a href="http://xfinitytv.comcast.net/">fancast.com</a></li>
+          <li>Developed user interfaces and publishing systems for editors to manage content</li>
+          <li>Wrote software to ingest syndicated news content from various news sources</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="http://www.infoplusonline.com/">Bristol Capital, Inc</a>
+        </h3>
+        <div class="timeframe">2005 - 2006</div>
+      </div>
+      <div class="nine columns">
+        <ul class="accomplishments">
+          <li>Developed telephone system (PBX) reporting software for internal Mac OS X
+            applications
+          </li>
+          <li>Parsed and imported telephone switch traffic data into a PostgreSQL database</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="http://cis.upenn.edu/">University of Pennsylvania</a>
+        </h3>
+        <div class="timeframe">2002 - 2005</div>
+        <em>Research Assistant/Ph.D. Student</em>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="http://cis.upenn.edu/">University of Pennsylvania</a>
+        </h3>
+      </div>
+      <div class="nine columns">
+        Master of Arts and Science
+        <br>
+        Major: Computer Science
+      </div>
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <h3>
+          <a href="http://www.villanova.edu">Villanova University</a>
+        </h3>
+      </div>
+      <div class="nine columns">
+        Bachelor of Science and Engineering
+        <br>
+        Major: Computer Engineering
+      </div>
+    </div>
+  </section>
 </div>
 </body>
 </html>
