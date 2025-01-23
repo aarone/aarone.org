@@ -5,219 +5,232 @@ title: Aaron Evans
 <!DOCTYPE HTML>
 <html lang="en">
 
-<head>
-  <title>Aaron Evans - Resume</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css">
-  <style>
-    {% include resume.css %}
-  </style>
-</head>
+  <head>
+    <title>Aaron Evans - Resume</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300"
+      rel="stylesheet"
+      type="text/css">
+    <style>
+      {% include resume.css %}
+    </style>
+  </head>
 
-<body>
-  <div class="container">
-    <header>
-      <section id="intro">
-        <div itemscope itemtype="https://schema.org/Person">
-          <h2>
-            <span itemprop="name">Aaron Evans</span>
-          </h2>
-          <ul id="contact-info">
-            <li itemscope itemtype="https://schema.org/PostalAddress">
-              <span itemprop="AddressLocality">
-                Philadelphia,
-              </span>
-              <span itemprop="addressRegion">PA</span>
-            </li>
-            <li>
-              <a href="mailto:aaron@aarone.org"><span itemprop="email">aaron@aarone.org</span></a>
-            </li>
-            <li>
-              <a itemprop="url" href="//www.aarone.org">www.aarone.org</a>
-            </li>
-          </ul>
-	  Experienced Software Engineer with a track record of building, scaling, and operating large, critical systems.
+  <body>
+    <div class="container">
+      <header>
+        <section id="intro">
+          <div itemscope itemtype="https://schema.org/Person">
+            <h2>
+              <span itemprop="name">Aaron Evans</span>
+            </h2>
+            <ul id="contact-info">
+              <li itemscope itemtype="https://schema.org/PostalAddress">
+                <span itemprop="AddressLocality">
+                  Philadelphia,
+                </span>
+                <span itemprop="addressRegion">PA</span>
+              </li>
+              <li>
+                <a href="mailto:aaron@aarone.org">
+                  <span itemprop="email">aaron@aarone.org</span>
+                </a>
+              </li>
+              <li>
+                <a itemprop="url" href="//www.aarone.org">www.aarone.org</a>
+              </li>
+            </ul>
+            Software Engineer with experience building, scaling, and
+            operating complex systems.
 
-	  Currently leading revenue initiatives at Cedar AI, developing mission-critical software for the railroad industry.
+	    Currently leading revenue initiatives at Cedar AI,
+	    developing software for the railroad industry.
 
-	  Previously spent a decade at Amazon (AWS EC2), improving deployment safety, optimizing system reliability, and scaling cloud infrastructure.
+	    Previously spent a decade at Amazon (AWS EC2) focused on
+	    EC2 hypervisor deployment safety and monitoring.
 
-	  Passionate about scalability, cloud computing, and engineering leadership, with a focus on designing efficient, resilient, and maintainable systems.
-        </div>
-      </section>
-    </header>
+	    Passionate about operational excellence and
+	    maintainability.
+          </div>
+        </section>
+      </header>
 
-    <section id="experience">
-      <h2>Experience</h2>
+      <section id="experience">
+        <h2>Experience</h2>
 
-      <div class="row">
-        <div class="three columns">
-          <h3>
-            <a href="https://www.cedarai.com/">Cedar AI</a>
-          </h3>
-          <div class="timeframe">2021 - Present</div>
-        </div>
-        <div class="nine columns">
-          <ul class="accomplishments">
-            <li>
-	      Developed and scaled a system enabling railroads to
+        <div class="row">
+          <div class="three columns">
+            <h3>
+              <a href="https://www.cedarai.com/">Cedar AI</a>
+            </h3>
+            <div class="timeframe">2021 - Present</div>
+          </div>
+          <div class="nine columns">
+            <ul class="accomplishments">
+              <li>
+                Developed and scaled a system enabling railroads to           
 	      integrate with
-	      the <a href="https://public.railinc.com/products-services/interline-settlement-system">Interline
+	      the
+                <a href="https://public.railinc.com/products-services/interline-settlement-system">Interline           
 	      Settlement System (ISS)</a>
-	      and <a href="https://public.railinc.com/products-services/rate-edi-network">Rate
-	      EDI Network (REN)</a>, growing it from an initial
+                and
+                <a href="https://public.railinc.com/products-services/rate-edi-network">Rate           
+	      EDI Network (REN)</a>, growing it from an initial           
 	      prototype to a 250K+ LOC production system while owning
-	      the majority of backend development
-            </li>
-            <li>
-	      Built a comprehensive test harness for validating the
+	      the majority of backend development.
+              </li>
+              <li>
+                Built a comprehensive test harness for validating the           
 	      ISS system, overcoming the challenge of launching into
 	      production without a pre-production integration
 	      environment.
-            </li>
-            <li>
-              Created a novel approach to processing X12 EDI using
+              </li>
+              <li>
+                Created a novel approach to processing X12 EDI using           
               protobufs. Brought all of the benefits of protobufs
               (e.g. declarative model, multi-language bindings,
               efficient encoding) to the ancient X12 EDI format.
-            </li>
-            <li>
-	      Led the migration from AWS Lambda to gRPC and Kubernetes
-	      by establishing key build and deployment infrastructure.
-            </li>
-            <li>
-	      Designed and implemented a data ingestion pipeline in Go
-              for railcar equipment data.
-	    </li>
-          </ul>
+              </li>
+              <li>
+                Led the migration of services from AWS Lambda to gRPC/Kubernetes           
+                by establishing build and deployment infrastructure.
+              </li>
+              <li>
+                Designed and implemented a data ingestion pipeline in Go           
+                for railcar equipment data.
+              </li>
+            </ul>
 
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="three columns">
-          <h3>
-            <a href="https://www.tableau.com/">Tableau</a>
-          </h3>
-          <div class="timeframe">2020 - 2021</div>
-           <ul class="accomplishments">
+        <div class="row">
+          <div class="three columns">
+            <h3>
+              <a href="https://www.tableau.com/">Tableau</a>
+            </h3>
+            <div class="timeframe">2020 - 2021</div>
+            <ul class="accomplishments">
               <li>
                 Owned web services managing Tableau Online Site lifecycle operations.
               </li>
               <li>
-              Defined target architecture for transitioning from a monolithic system to a workflow-based orchestration system.
+                Defined target architecture for transitioning from a monolithic system to a workflow-based orchestration system.
               </li>
             </ul>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="three columns">
-          <h3>
-            <a href="https://www.amazon.com/">Amazon</a>
-          </h3>
-          <div class="timeframe">2015 - 2020</div>
-        </div>
-        <div class="nine columns">
-          <ul class="accomplishments">
-            <li>
-	      Owned and maintained the customer-facing
-	      <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceStatus.html">the
-	      EC2 DescribeInstanceStatus API</a>, one of the most frequently
-	      called and most critical APIs in EC2, along with its
-	      underlying data ingestion pipeline.
-            </li>
-            <li>
-              Resolved a critical scaling bottleneck that required
+        <div class="row">
+          <div class="three columns">
+            <h3>
+              <a href="https://www.amazon.com/">Amazon</a>
+            </h3>
+            <div class="timeframe">2015 - 2020</div>
+          </div>
+          <div class="nine columns">
+            <ul class="accomplishments">
+              <li>
+                Owned and maintained the customer-facing
+                <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceStatus.html">the           
+	              EC2 DescribeInstanceStatus API</a>, one of the most frequently           
+	              called and most critical APIs in EC2, along with its
+	              underlying data ingestion pipeline.
+              </li>
+              <li>
+                Resolved a critical scaling bottleneck that required           
                 rearchitecting parts of the EC2 instance health data
                 ingestion process.
-            </li>
-            <li>
-	      Led key improvements to the EC2 hypervisor deployment
-	      process, reducing customer-impacting outages by
-	      proposing, gaining leadership buy-in, and coordinating
-	      implementation across multiple teams.
-            </li>    
-            <li>
-	      Conducted 1,200+ technical interviews as an Amazon Bar
-	      Raiser, playing a pivotal role in maintaining high
-	      hiring standards.
-            </li>
-          </ul>
+              </li>
+              <li>
+                Led key improvements to the EC2 hypervisor deployment           
+	              process, reducing customer-impacting outages by
+	              proposing, gaining leadership buy-in, and coordinating
+	              implementation across multiple teams.
+              </li>
+              <li>
+                Conducted 1,200+ technical interviews as an Amazon Bar           
+	              Raiser, playing a pivotal role in maintaining high
+	              hiring standards.
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="three columns">
-          <h3>
-            <a href="https://www.twosigma.com/">Two Sigma Investments</a>
-          </h3>
-          <div class="timeframe">2014 - 2015</div>
-        </div>
-        <div class="nine columns">
-          <ul class="accomplishments">
-            <li>Worked on an <a href="http://en.wikipedia.org/wiki/Alpha_capture_system">alpha capture
+        <div class="row">
+          <div class="three columns">
+            <h3>
+              <a href="https://www.twosigma.com/">Two Sigma Investments</a>
+            </h3>
+            <div class="timeframe">2014 - 2015</div>
+          </div>
+          <div class="nine columns">
+            <ul class="accomplishments">
+              <li>Worked on an
+                <a href="http://en.wikipedia.org/wiki/Alpha_capture_system">alpha capture           
                 system</a>.
-            </li>
-            <li>Automated a release and deployment process using <a href="http://www.ansible.com/home">Ansible</a>. Took
+              </li>
+              <li>Automated a release and deployment process using
+                <a href="http://www.ansible.com/home">Ansible</a>. Took           
               a manual, multi-step process and
               transformed it into an automated, single-step process.
-            </li>
-            <li>Re-designed and implemented login and session management across multiple sites.</li>
-          </ul>
+              </li>
+              <li>Re-designed and implemented login and session management across multiple sites.</li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="three columns">
-          <h3>
-            <a href="http://aws.amazon.com/">Amazon</a>
-          </h3>
-          <div class="timeframe">2009 - 2014</div>
-        </div>
-        <div class="nine columns">
-          <ul class="accomplishments">
-            <li>Designed and implemented a system to automate multi-region tasks across AWS</li>
-            <li>Lead/founding developer on a team that built systems to standardize the infrastructure
+        <div class="row">
+          <div class="three columns">
+            <h3>
+              <a href="http://aws.amazon.com/">Amazon</a>
+            </h3>
+            <div class="timeframe">2009 - 2014</div>
+          </div>
+          <div class="nine columns">
+            <ul class="accomplishments">
+              <li>Designed and implemented a system to automate multi-region tasks across AWS</li>
+              <li>Lead/founding developer on a team that built systems to standardize the infrastructure           
               hardware ordering process. Helped grow the team from 3 to 15 developers in a year.
-            </li>
-            <li>Designed and implemented RESTful web services for Amazon's server provisioning
-              system
-            </li>
-            <li>Added support for EC2 capacity into the server provisioning system to allow teams to
-              adopt AWS and EC2
-            </li>
-            <li>On-call support - carried a pager and was first-responder for critical services. Involved
+              </li>
+              <li>Designed and implemented RESTful web services for Amazon's server provisioning           
+              system.
+              </li>
+              <li>Added support for EC2 capacity into the server provisioning system to allow teams to           
+              adopt AWS and EC2.
+              </li>
+              <li>On-call support - carried a pager and was first-responder for critical services. Involved           
               in various large scale events.
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section>
-      <h2>Education</h2>
-      <div class="row">
-        <div class="three columns">
-          <h3>
-            <a href="http://cis.upenn.edu/">University of Pennsylvania</a>
-          </h3>
+      <section>
+        <h2>Education</h2>
+        <div class="row">
+          <div class="three columns">
+            <h3>
+              <a href="http://cis.upenn.edu/">University of Pennsylvania</a>
+            </h3>
+          </div>
+          <div class="nine columns">
+            Master of Arts and Science, Computer Science
+          </div>
         </div>
-        <div class="nine columns">
-          Master of Arts and Science, Computer Science
+        <div class="row">
+          <div class="three columns">
+            <h3>
+              <a href="http://www.villanova.edu">Villanova University</a>
+            </h3>
+          </div>
+          <div class="nine columns">
+            Bachelor of Science and Engineering, Computer Engineering
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="three columns">
-          <h3>
-            <a href="http://www.villanova.edu">Villanova University</a>
-          </h3>
-        </div>
-        <div class="nine columns">
-          Bachelor of Science and Engineering, Computer Engineering
-        </div>
-      </div>
-    </section>
-  </div>
-</body>
+      </section>
+    </div>
+  </body>
 
 </html>
