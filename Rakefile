@@ -23,7 +23,7 @@ namespace :timeline do
   end
 
   task :acorn_install_check do
-    raise "Need to install Acorn to prepare images: https://flyingmeat.com/acorn/" unless File.exists? '/Applications/Acorn.app'
+    raise "Need to install Acorn to prepare images: https://flyingmeat.com/acorn/" unless File.exist? '/Applications/Acorn.app'
   end
 
   # generating timeline images requires Acorn
