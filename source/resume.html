@@ -68,10 +68,27 @@ title: Aaron Evans
           </div>
           <div class="nine columns">
             <ul class="accomplishments">
+	      <li>
+		Built a rate quoting API for shippers that calculates
+		multi-leg (Rule 11) shipment costs across railroads. Handles per-leg
+		charge calculation with complex railroad rating logic and constraints,
+		fuel surcharge calculation by mileage where applicable, leg
+		compatibility validation, and ranking of results by distance or cost.
+	      </li>
+	      <li>
+		Built an LLM-based pipeline to ingest rate documents
+		(PDFs, Excel, and other unstructured formats) provided
+		to shippers as tariffs or contracts, and convert them
+		into structured railroad rate data (EDI 460/490) for
+		shipping cost calculation. The pipeline handles dozens
+		of input formats, parses natural language text
+		into structured shipment conditions, supports
+		human-in-the-loop review to provide feedback to the
+		model, and scales to large tariffs (~1,000 pages).
+	      </li>
               <li>
-                Build and launched a system enabling railroads to                               
-	      integrate with
-	      the
+                Build and launched a system enabling railroads to
+	      integrate with the
                 <a href="https://public.railinc.com/products-services/interline-settlement-system">Interline                               
 	      Settlement System (ISS)</a>
                 and
